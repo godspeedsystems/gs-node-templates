@@ -1,10 +1,10 @@
 #consuming Salesforce event{/event/LEN_SCF_Distributor__e} and validating its schema
-salesforce./event/LEN_SCF_Distributor__e:
+salesforce./event/some_event:
   id: /salesforcetopic
   fn: crm_sync.salesforce_to_kafka
   summary: Salesforce to scf
   description: push distributor data, Salesforce to scf
-  data:
+  body:
     description: validating salesforce schema
     required: true
     content:
