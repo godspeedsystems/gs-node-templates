@@ -1,0 +1,15 @@
+graphql.get./helloworld:
+  fn: helloworld_ts
+  authn: false
+  params:
+    - name: name
+      in: query
+      schema:
+        type: string
+  
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: object

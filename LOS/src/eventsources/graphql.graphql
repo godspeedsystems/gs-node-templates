@@ -1,0 +1,95 @@
+scalar JSON
+
+type Mutation {
+  """Update LoanApplication from database"""
+  put_lending_service_db_loanapplication_id(id: String!, body: param_put_lending_service_db_loanapplication_id_bodyInput): JSON!
+
+  """Delete LoanApplication from database"""
+  delete_lending_service_db_loanapplication_id(id: String!): JSON!
+
+  """Create LoanApplication from database"""
+  post_lending_service_db_loanapplication(body: param_post_lending_service_db_loanapplication_bodyInput): JSON!
+
+  """Fetch multiple LoanApplication from database"""
+  post_lending_service_db_loanapplication_search(body: JSON): JSON!
+
+  """Update LoanProduct from database"""
+  put_lending_service_db_loanproduct_id(id: String!, body: param_put_lending_service_db_loanproduct_id_bodyInput): JSON!
+
+  """Delete LoanProduct from database"""
+  delete_lending_service_db_loanproduct_id(id: String!): JSON!
+
+  """Create LoanProduct from database"""
+  post_lending_service_db_loanproduct(body: param_post_lending_service_db_loanproduct_bodyInput): JSON!
+
+  """Fetch multiple LoanProduct from database"""
+  post_lending_service_db_loanproduct_search(body: JSON): JSON!
+
+  """Update User from database"""
+  put_lending_service_db_user_id(id: String!, body: param_put_lending_service_db_user_id_bodyInput): JSON!
+
+  """Delete User from database"""
+  delete_lending_service_db_user_id(id: String!): JSON!
+
+  """Create User from database"""
+  post_lending_service_db_user(body: param_post_lending_service_db_user_bodyInput): JSON!
+
+  """Fetch multiple User from database"""
+  post_lending_service_db_user_search(body: JSON): JSON!
+}
+
+input param_post_lending_service_db_loanapplication_bodyInput {
+  createdAt: String
+  updatedAt: String
+  status: String
+  amount: Float
+  userId: Int
+  loanProductId: Int
+}
+
+input param_post_lending_service_db_loanproduct_bodyInput {
+  name: String
+  interestRate: Float
+  termLength: Int
+}
+
+input param_post_lending_service_db_user_bodyInput {
+  email: String
+  password: String
+  name: String
+}
+
+input param_put_lending_service_db_loanapplication_id_bodyInput {
+  createdAt: String
+  updatedAt: String
+  status: String
+  amount: Float
+  userId: Int
+  loanProductId: Int
+}
+
+input param_put_lending_service_db_loanproduct_id_bodyInput {
+  name: String
+  interestRate: Float
+  termLength: Int
+}
+
+input param_put_lending_service_db_user_id_bodyInput {
+  email: String
+  password: String
+  name: String
+}
+
+type Query {
+  get_helloworld(name: String): JSON!
+
+  """Fetch LoanApplication from database"""
+  get_lending_service_db_loanapplication_id(id: String!): JSON!
+
+  """Fetch LoanProduct from database"""
+  get_lending_service_db_loanproduct_id(id: String!): JSON!
+
+  """Fetch User from database"""
+  get_lending_service_db_user_id(id: String!): JSON!
+}
+

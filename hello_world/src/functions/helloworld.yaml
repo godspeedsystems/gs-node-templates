@@ -1,0 +1,7 @@
+summary: hello world summary
+description: Lets hit an API and send data to Kafka
+tasks:
+  - id: first_task
+    fn: com.gs.transform
+    args:
+      name: <%inputs.query.name%>

@@ -1,0 +1,7 @@
+summary: Fetch LoanApplication
+tasks:
+  - id: lending_service_db_loanapplication_one
+    fn: datasource.lending_service_db.LoanApplication.findUnique
+    args:
+      where:
+        id: <% parseInt(inputs.params.id) %>

@@ -1,0 +1,15 @@
+http.post./apply/loan:
+  summary: Apply for loan 
+  description:  Apply for loan
+  fn: los.apply_for_loan
+  authn: false
+  body:
+    content:
+      application/json:
+         schema:
+          $ref: '#/definitions/los/apply_loan'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object

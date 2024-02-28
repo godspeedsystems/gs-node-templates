@@ -1,0 +1,12 @@
+GENDER:
+  MALE: true
+  FEMALE: false
+
+LOAN_JOURNEY:
+  customized_workflow_per_lender_and_product:
+    my_bank:
+      flow:
+        - kyc
+          upload_document
+          create_account
+          

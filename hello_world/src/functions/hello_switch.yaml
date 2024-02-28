@@ -1,0 +1,19 @@
+tasks:
+  - id: unique_id
+    description: detailed description of workflow
+    fn: com.gs.switch
+    value: <%true%>
+    cases:
+      "true":
+        - id: som
+          fn: com.gs.return
+          args:
+            case: true
+            ab: 55
+            data:
+              case: true
+      "false":
+        - id: som
+          fn: com.gs.return
+          args:
+            case: false

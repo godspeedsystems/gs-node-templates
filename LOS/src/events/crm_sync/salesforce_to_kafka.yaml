@@ -1,0 +1,120 @@
+#consuming Salesforce event{/event/LEN_SCF_Distributor__e} and validating its schema
+salesforce./event/LEN_SCF_Distributor__e:
+  id: /salesforcetopic
+  fn: crm_sync.salesforce_to_kafka
+  summary: Salesforce to scf
+  description: push distributor data, Salesforce to scf
+  data:
+    description: validating salesforce schema
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            schema:
+              type: string
+            payload:
+              type: object
+              properties:
+                AddressLine2__c:
+                  type: string
+                PAN_Validation_Failure_Reason__c:
+                  type: string
+                GST_Validation__c:
+                  type: string
+                City__c:
+                  type: string
+                UpdatedAt__c:
+                  type: string
+                UpdatedBy__c:
+                  type: string
+                CreatedById:
+                  type: string
+                PAN_Name__c:
+                  type: string
+                MobileNumber__c:
+                  type: string
+                Anchor_SF_ID__c:
+                  type: string
+                TradeName__c:
+                  type: string
+                accountNumber__c:
+                  type: string
+                BA_Validation_Failure_Reason__c:
+                  type: string
+                PAN_VALIDATION__c:
+                  type: string
+                Bank_Name__c:
+                  type: string
+                State__c:
+                  type: string
+                BA_Account_Holder_Name__c:
+                  type: string
+                Country__c:
+                  type: string
+                beneName__c:
+                  type: string
+                PAN_GST_NAMEMATCH__c:
+                  type: string
+                Type_of_Business__c:
+                  type: string
+                Name__c:
+                  type: string
+                GST_Number__c:
+                  type: string
+                AddressLine1__c:
+                  type: string
+                SFID__c:
+                  type: string
+                businessCategory__c:
+                  type: string
+                SCF_ID__c:
+                  type: string
+                BA_Namematch_Failure_Reason__c:
+                  type: string
+                AddressType__c:
+                  type: string
+                BANK_ACCOUNT_NAMEMATCH__c:
+                  type: string
+                PAN_GST_NAMEMATCH_Failure_Reason__c:
+                  type: string
+                Flag__c:
+                  type: string
+                LegalName__c:
+                  type: string
+                ZipCode__c:
+                  type: string
+                ifscCode__c:
+                  type: string
+                CreatedDate:
+                  type: string
+                Status__c:
+                  type: string
+                PAN_Number__c:
+                  type: string
+                Branch__c:
+                  type: string
+                Email__c:
+                  type: string
+                GST_Validation_Failure_Reason__c:
+                  type: string
+                BANK_ACCOUNT_VALIDATION__c:
+                  type: string
+                L2_Rejection_Reason__c:
+                  type: string
+                PAN_Validation__c:
+                  type: string
+                PAN_GST_Namematch__c:
+                  type: string
+                Legal_Name__c:
+                  type: string
+                Trade_Name__c:
+                  type: string
+                BANK_ACCOUNT_VALIDATION_Failure_Reason__c:
+                  type: string          
+            event:
+              type: object
+              properties:
+                replayId:
+                  type: number

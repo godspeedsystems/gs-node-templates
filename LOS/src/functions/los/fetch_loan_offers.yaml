@@ -1,0 +1,14 @@
+summary: fetching loans offered by different banks via rule-engine datasource 
+id: rule-engine_datasource_loan_fetch
+tasks:
+  - id: fetch_loans
+    description: Fetching loan offers
+    fn: datasource.rule_engine.post./anything
+    args:
+      data: <% inputs.body %>
+  - id: tranform_loan_data
+    description: transforming response from rule-engine
+    fn: com.gs.transform
+    args:
+      data: 
+        loan_offers: <% outputs.fetch_loans.data.data %>

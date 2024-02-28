@@ -1,0 +1,156 @@
+# consuming kafka event from topic (scf-distributor-personal-details-response) for push data into salesforce
+kafka.scf-distributor-personal-details-response.grpId1:
+  id: /kafkaEventUpdate
+  fn: crm_sync.kafka_to_salesforce
+  summary: transfer distributor data from scf to salesforce
+  description: consume data from scf and transfer data into salesforce
+  data:
+    description: salesforce data payload
+    required: true
+    content:
+      application/json:
+        schema:
+          type: string
+          required:
+            [
+              createdAt,
+              updatedAt,
+              createdBy,
+              updatedBy,
+              scfId,
+              sfId,
+              name,
+              mobileNumber,
+              email,
+              status,
+              businessCategory,
+              anchor,
+            ]
+          properties:
+            createdAt:
+              type: string
+            updatedAt:
+              type: array
+            createdBy:
+              type: string
+            updatedBy:
+              type: array
+            scfId:
+              type: string
+            sfId:
+              type: string
+            name:
+              type: string
+            pan:
+              type: object
+              required: [panNumber]
+              properties:
+                panNumber:
+                  type: string
+                panName:
+                  type: string
+            gst:
+              type: object
+              required: [gstNumber]
+              properties:
+                gstNumber:
+                  type: string
+                tradeName:
+                  type: string
+                legalName:
+                  type: string
+                typeOfBusiness:
+                  type: string
+            mobileNumber:
+              type: string
+            error:
+              type: string
+            email:
+              type: string
+            status:
+              type: string
+            addresses:
+              type: array
+              items:
+                type: object
+                required:
+                  [
+                    addressLine1,
+                    addressLine2,
+                    city,
+                    state,
+                    zipCode,
+                    addressType,
+                    country,
+                  ]
+                properties:
+                  addressLine1:
+                    type: string
+                  addressLine2:
+                    type: string
+                  city:
+                    type: string
+                  state:
+                    type: string
+                  zipCode:
+                    type: string
+                  addressType:
+                    type: string
+                  country:
+                    type: string
+            bankAccountDetails:
+              type: array
+              items:
+                type: object
+                required: [accountHolderName, accountNumber, ifscCode]
+                properties:
+                  accountHolderName:
+                    type: string
+                  accountNumber:
+                    type: string
+                  ifscCode:
+                    type: string
+                  beneName:
+                    type: string
+                  branch:
+                    type: string
+                  bankName:
+                    type: string
+            businessCategory:
+              type: string
+            anchor:
+              type: object
+              required: [id, name, mobileNumber]
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                mobileNumber:
+                  type: string
+            onboardingValidations:
+              type: array
+              items:
+                type: object
+                properties:
+                  validationStatus:
+                    type: string
+                  validationType:
+                    type: string
+                  failureReason:
+                    type: string
+                  validationMetaData:
+                    type: object
+                    properties:
+                      additionalProperties:
+                        type: string
+                  updatedAt:
+                    type: string
+            rejectionReasons:
+              type: array
+              items:
+                type: string
+            rejectionReasonsHistory:
+              type: array
+              items:
+                type: string

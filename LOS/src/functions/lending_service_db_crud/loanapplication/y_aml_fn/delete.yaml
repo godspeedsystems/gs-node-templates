@@ -1,0 +1,7 @@
+summary: Delete LoanApplication
+tasks:
+  - id: lending_service_db_loanapplication_delete
+    fn: datasource.lending_service_db.LoanApplication.delete
+    args:
+      where:
+        id: <% parseInt(inputs.params.id) %>

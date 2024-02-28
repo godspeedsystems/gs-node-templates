@@ -1,0 +1,36 @@
+User:
+  type: object
+  properties:
+    email:
+      type: string
+    password:
+      type: string
+    name:
+      type: string
+      nullable: true
+LoanApplication:
+  type: object
+  properties:
+    createdAt:
+      type: string
+      format: date-time
+    updatedAt:
+      type: string
+      format: date-time
+    status:
+      type: string
+    amount:
+      type: number
+    userId:
+      type: integer
+    loanProductId:
+      type: integer
+LoanProduct:
+  type: object
+  properties:
+    name:
+      type: string
+    interestRate:
+      type: number
+    termLength:
+      type: integer

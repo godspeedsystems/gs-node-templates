@@ -1,0 +1,29 @@
+type: aws
+default_client_config:
+  region: <%config.aws.region%>
+  credentials:
+    accessKeyId: <%config.aws.accessKeyId%>
+    secretAccessKey: <%config.aws.secretAccessKey%>
+
+services:
+  s3:
+    type: s3
+  # s3_1:
+  #   type: s3
+  dynamodb:
+    type: dynamodb
+  # sqs:
+  #   type: sqs
+  # ssm:
+  #   type: ssm
+  # lamdba:
+  #   type: lambda
+
+# service type is the name of the npm module for ex. @aws-sqk/client-dynamodb or @aws-sqk/client-s3 etc
+# The `types` key can have service type to sdk's client names mappings when coding
+types: 
+  dynamodb: DynamoDB
+  s3: S3
+  lambda: Lambda
+  ssm: SSM
+  sqs: SQS

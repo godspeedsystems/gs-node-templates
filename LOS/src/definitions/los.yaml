@@ -1,0 +1,35 @@
+loan_offers:
+  type: array
+  properties:
+    bank_name:
+      type: string
+    loan_amount:
+      type: string
+    interest_rate:
+      type: string
+    duration:
+      type: string
+
+apply_loan:
+  type: object
+  properties:
+    loan_offer:
+      type: object
+      properties:
+        bank_name:
+          type: string
+        loan_amount:
+          type: string
+        interest_rate:
+          type: string
+        duration:
+          type: string
+    kyc:
+      type: object
+      properties:
+        pan_number:
+          type: string
+        mobile_number:
+          type: number
+    
+    

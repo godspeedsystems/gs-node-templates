@@ -1,0 +1,3 @@
+type: kafka
+clientId: <% config.kafka.__name.client_id %>
+brokers: <% config.kafka.brokers %>

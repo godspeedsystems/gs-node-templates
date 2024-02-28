@@ -1,0 +1,5 @@
+summary: Fetch many User
+tasks:
+  - id: lending_service_db_user_search
+    fn: datasource.lending_service_db.User.findMany
+    args: {}

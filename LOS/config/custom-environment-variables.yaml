@@ -1,0 +1,30 @@
+node_env: NODE_ENV #where NODE_ENV is an environment variable set by you. This will be accessible as config.node_env in inline script and ctx.config.node_env in JS/TS
+aws:
+  region: REGION
+  secretAccessKey: SECRET_ACCESS_KEY
+  accessKeyId: ACCESS_KEY_ID
+salesforce:
+  auth_url: SALESFORCE_AUTH_URL
+  loan_url: SALESFORCE_LOAN_URL
+  query_params:
+    client_id: SALESFORCE_AUTH_CLIENT_ID
+    grant_type: SALESFORCE_AUTH_GRANT_TYPE
+    password: SALESFORCE_AUTH_PASSWORD
+    username: SALESFORCE_AUTH_USERNAME
+    client_secret: SALESFORCE_AUTH_CLIENT_SECRET 
+
+  loginUrl: SALESFORCE_LOGIN_URL
+  headers: 
+    Cookie: SALESFORCE_AUTH_COOKIE
+
+kafka:
+  brokers:
+    __name: KAFKA_BROKERS
+    __format: json
+  client_id: KAFKA_CLIENT_ID
+
+topicName:
+  distributor: KAFKA_DISTRIBUTOR_TOPIC_NAME
+
+url:
+  distributor_url: SALESFORCE_DISTRIBUTOR_URL

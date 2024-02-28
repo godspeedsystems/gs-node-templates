@@ -1,0 +1,11 @@
+type: axios
+base_url: <% config.salesforce.loan_url %>
+  # Authorization: com.lending.salesforceAuthToken
+
+authn:
+  fn: crm_sync.salesforceAuthToken
+  refreshOn:
+    statusCode: [401]
+headers:
+  Content-Type: application/json
+

@@ -1,0 +1,6 @@
+summary: Create LoanApplication
+tasks:
+  - id: lending_service_db_loanapplication_create
+    fn: datasource.<% config.datasourceDB.name %>.LoanApplication.create
+    args:
+      data: <% inputs.body %>

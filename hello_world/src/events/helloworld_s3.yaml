@@ -1,0 +1,9 @@
+http.get./helloworld_s3:
+  fn: aws_s3_queries
+  authn: true
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: object

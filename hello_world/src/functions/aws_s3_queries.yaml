@@ -1,0 +1,13 @@
+id: helloworld
+summary: query dynamodb buckets
+tasks:
+  # - id: first_task
+  #   fn: datasource.aws.s3.listBuckets #dynamodb.listTables
+  #   args: {}
+  #   on_error:
+  #     continue: false
+  - id: first_task
+    fn: datasource.aws.dynamodb.listTables
+    args: {}
+    on_error:
+      continue: false

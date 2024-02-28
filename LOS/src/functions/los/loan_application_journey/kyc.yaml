@@ -1,0 +1,15 @@
+summary: User KYC verification 
+id: rule-engine_datasource_verify_kyc
+tasks:
+  - id: verify_kyc
+    description: verify user kyc details
+    fn: datasource.rule_engine.post./anything
+    args:
+      data: <% inputs.body.kyc %>
+  - id: tranform_kyc_verification_data
+    description: transforming response from rule-engine kyc details
+    fn: com.gs.transform
+    args:
+      data: 
+        applied_for: <% outputs.verify_kyc.data%>
+        message: kyc verification done

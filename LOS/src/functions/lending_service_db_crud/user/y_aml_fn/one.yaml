@@ -1,0 +1,7 @@
+summary: Fetch User
+tasks:
+  - id: lending_service_db_user_one
+    fn: datasource.lending_service_db.User.findUnique
+    args:
+      where:
+        id: <% parseInt(inputs.params.id) %>

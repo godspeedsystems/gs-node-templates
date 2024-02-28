@@ -1,0 +1,5 @@
+type: salesforce
+loginUrl: <% config.salesforce.loginUrl %>
+username: <% config.salesforce.query_params.username %>
+password: <% config.salesforce.query_params.password %>
+

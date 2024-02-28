@@ -1,0 +1,7 @@
+summary: Delete User
+tasks:
+  - id: lending_service_db_user_delete
+    fn: datasource.lending_service_db.User.delete
+    args:
+      where:
+        id: <% parseInt(inputs.params.id) %>

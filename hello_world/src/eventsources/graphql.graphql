@@ -1,0 +1,6 @@
+scalar JSON
+
+type Query {
+  get_helloworld(name: String): JSON!
+}
+

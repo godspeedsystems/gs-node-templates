@@ -1,0 +1,6 @@
+summary: Create User
+tasks:
+  - id: lending_service_db_user_create
+    fn: datasource.lending_service_db.User.create
+    args:
+      data: <% inputs.body %>

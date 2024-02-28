@@ -1,0 +1,15 @@
+"http.get./helloworld":
+  fn: hello_switch
+  authn: false
+  params:
+    - name: name
+      in: query
+      schema:
+        type: string  
+        enum: ['hello', 'bye']
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: object

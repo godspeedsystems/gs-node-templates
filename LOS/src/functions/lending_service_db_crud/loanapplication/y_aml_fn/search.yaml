@@ -1,0 +1,5 @@
+summary: Fetch many LoanApplication
+tasks:
+  - id: lending_service_db_loanapplication_search
+    fn: datasource.lending_service_db.LoanApplication.findMany
+    args: {}

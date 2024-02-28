@@ -1,0 +1,15 @@
+http.post./fetch/loan/offers:
+  summary: Fetch loan offer from banks
+  description:  Fetch loan offer from banks
+  fn: los.fetch_loan_offers
+  authn: false
+  body:
+    content:
+      application/json:
+        schema:
+          $ref: '#/definitions/los/loan_offers'
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object

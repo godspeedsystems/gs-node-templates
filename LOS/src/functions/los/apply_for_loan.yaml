@@ -1,0 +1,28 @@
+summary: fetching loans offered by different banks via rule-engine datasource 
+id: rule-engine_datasource_loan_fetch
+tasks:
+  - id: fetch_loans
+    description: Fetching loan offers
+    fn: datasource.rule_engine.post./anything
+    args:
+      data: <% inputs.body %>
+  - id: tranform_loan_data
+    description: transforming response from rule-engine
+    fn: com.gs.transform
+    args:
+      data: 
+        applied_for: <% outputs.fetch_loans.data.data %>
+        message: successfully applied
+  - id: kyc_details_verify
+    description: detailed description of workflow
+    fn: los.loan_application_journey.kyc
+    args: <% inputs %>
+  - id: create_account_after_verify_kyc
+    description: detailed description of workflow
+    fn: los.loan_application_journey.upload_document
+    args: <% inputs %>
+  - id: create_account_after_verify_kyc
+    description: detailed description of workflow
+    fn: los.loan_application_journey.create_account
+    args: <% inputs %>
+  

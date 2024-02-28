@@ -1,0 +1,17 @@
+summary: fetching loans offered by different banks via rule-engine datasource 
+id: rule-engine_datasource_loan_fetch
+tasks:
+  - id: fetch_loans
+    description: Fetching loan offers
+    fn: datasource.lms.post./anything
+    args:
+      data: 
+        bank_name: <% inputs.body.loan_offer.bank_name %>
+        pan_number: <% inputs.body.kyc.pan_number %>
+  - id: tranform_loan_data
+    description: transforming response from rule-engine
+    fn: com.gs.transform
+    args:
+      data: 
+        applied_for: <% outputs.fetch_loans.data %>
+        message: loan approved and your bank account created.

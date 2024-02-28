@@ -1,0 +1,18 @@
+summary: push salesforce data into kafka cluster
+id: distributors_data_salesforce
+tasks:
+  # 1 transformation of incoming salesforce data request for producing to scf
+  - id: transform_salesforce_data
+    description: prepare the data for kafka message
+    fn: com.gs.transform
+    args:
+      data: <% inputs.body>%
+      additional_data: <%randomInt()%> #Example of calling a function from src/plugins in an inline script 
+      whatever: "something"
+
+  # Publish the distributor data into SCF
+  - id: publish_distributor_data_into_scf
+    fn: datasource.kafka.producer
+    args:
+      topic: <% config.topicName.distributor %>
+      message: <%outputs.transform_salesforce_data.data%>

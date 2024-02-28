@@ -1,0 +1,4 @@
+type: axios
+base_url: https://httpbin.org
+headers: #The commonheaders that you want to send in every API call
+  Content-Type: application/json

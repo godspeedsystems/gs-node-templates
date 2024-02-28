@@ -1,0 +1,6 @@
+summary: Create LoanProduct
+tasks:
+  - id: lending_service_db_loanproduct_create
+    fn: datasource.lending_service_db.LoanProduct.create
+    args:
+      data: <% inputs.body %>

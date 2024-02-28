@@ -1,0 +1,16 @@
+type: express
+port: 4008
+
+authn:
+  jwt:
+    secretOrKey: mysecret
+    audience: mycompany
+    issuer: mycompany
+
+authz:
+  - id: check_user_role
+    fn: com.gs.transform
+    args: <%inputs.user.role === 'admin'%>
+
+on_request_validation_error: validations.request.standardResponse
+on_response_validation_error: validations.request.standardResponse
