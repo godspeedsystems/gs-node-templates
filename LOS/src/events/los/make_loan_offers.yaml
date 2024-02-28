@@ -2,7 +2,7 @@ http.post./fetch/loan/offers:
   summary: Fetch loan offer from banks
   description:  Fetch loan offer from banks
   fn: los.fetch_loan_offers
-  authn: false
+  
   body:
     content:
       application/json:

@@ -1,9 +1,9 @@
 # ONE
-graphql.get./lending_service_db/loanproduct/{id}:
+http.get./lending_service_db/loanproduct/{id}:
   summary: Fetch LoanProduct
   description: Fetch LoanProduct from database
   fn: lending_service_db_crud.loanproduct.ts.one
-  authn: false
+  
   params:
     - name: id
       in: path
@@ -21,7 +21,7 @@ http.post./lending_service_db/loanproduct:
   summary: Create a new LoanProduct
   description: Create LoanProduct from database
   fn: lending_service_db_crud.loanproduct.ts.create
-  authn: false
+  
   body:
     content:
       application/json:
@@ -38,7 +38,7 @@ http.put./lending_service_db/loanproduct/{id}:
   summary: Update a LoanProduct
   description: Update LoanProduct from database
   fn: lending_service_db_crud.loanproduct.ts.update
-  authn: false
+  
   body:
     content:
       application/json:
@@ -61,7 +61,7 @@ http.delete./lending_service_db/loanproduct/{id}:
   summary: Delete a LoanProduct
   description: Delete LoanProduct from database
   fn: lending_service_db_crud.loanproduct.ts.delete
-  authn: false
+  
   params:
     - name: id
       in: path
@@ -79,7 +79,7 @@ http.post./lending_service_db/loanproduct/search:
   summary: Fetch multiple LoanProduct
   description: Fetch multiple LoanProduct from database
   fn: lending_service_db_crud.loanproduct.ts.search
-  authn: false
+  
   body:
     content:
       application/json:

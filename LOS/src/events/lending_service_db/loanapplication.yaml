@@ -21,7 +21,7 @@ http.post./lending_service_db/loanapplication:
   summary: Create a new LoanApplication
   description: Create LoanApplication from database
   fn: lending_service_db_crud.loanapplication.ts.create
-  authn: false
+  
   authz: false
   body:
     content:

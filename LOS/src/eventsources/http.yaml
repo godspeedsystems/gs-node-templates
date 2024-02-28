@@ -12,11 +12,11 @@ authn:
     audience: mycompany
     issuer: mycompany
 
-#authorization policies to run by default on every event
-# authz:
-#   - id: check_user_role
-#     fn: com.gs.transform
-#     args: <%inputs.user.role === 'admin'%>
+# authorization policies to run by default on every event
+authz:
+  - id: check_user_role
+    fn: com.gs.transform
+    args: <%inputs.user.role === 'admin'%>
 
 # validation error handling, to transform error responses
 on_request_validation_error: validations.request.standardResponseyml

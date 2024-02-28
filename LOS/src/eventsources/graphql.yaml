@@ -1,4 +1,4 @@
-type: express
+type: graphql
 port: 4008
 
 authn:

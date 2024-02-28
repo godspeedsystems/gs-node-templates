@@ -3,7 +3,6 @@ http.get./lending_service_db/user/{id}:
   summary: Fetch User
   description: Fetch User from database
   fn: lending_service_db_crud.user.ts.one
-  authn: false
   params:
     - name: id
       in: path
@@ -21,7 +20,6 @@ http.post./lending_service_db/user:
   summary: Create a new User
   description: Create User from database
   fn: lending_service_db_crud.user.ts.create
-  authn: false
   body:
     content:
       application/json:
@@ -38,7 +36,7 @@ http.put./lending_service_db/user/{id}:
   summary: Update a User
   description: Update User from database
   fn: lending_service_db_crud.user.y_aml_fn.update
-  authn: false
+  
   body:
     content:
       application/json:
@@ -61,7 +59,6 @@ http.delete./lending_service_db/user/{id}:
   summary: Delete a User
   description: Delete User from database
   fn: lending_service_db_crud.user.ts.delete
-  authn: false
   params:
     - name: id
       in: path
@@ -79,7 +76,7 @@ http.post./lending_service_db/user/search:
   summary: Fetch multiple User
   description: Fetch multiple User from database
   fn: lending_service_db_crud.user.ts.search
-  authn: false
+  
   body:
     content:
       application/json:

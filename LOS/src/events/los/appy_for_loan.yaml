@@ -2,7 +2,7 @@ http.post./apply/loan:
   summary: Apply for loan 
   description:  Apply for loan
   fn: los.apply_for_loan
-  authn: false
+  
   body:
     content:
       application/json:
