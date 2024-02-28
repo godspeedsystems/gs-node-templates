@@ -1,0 +1,15 @@
+tasks:
+  - id: validation_error
+    description: here you can customize the response when a request validation error happens
+    fn: com.gs.transform
+    args:
+      success: false
+      code: 400
+      data: #can manipulate response data here
+        <%inputs.validation_error%>
+    # logs:
+    #   before:
+    #     level: info
+    #     message: "something went wrong"
+    #     attributes:
+    #       info: <%inputs%>
