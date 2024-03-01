@@ -1,8 +1,8 @@
 # ONE
-http.get./lending_service_db/user/{id}:
+http & graphql.get./lending_service_db/user/{id}:
   summary: Fetch User
   description: Fetch User from database
-  fn: lending_service_db_crud.user.ts.one
+  fn: com.biz.lending_service_db.user.one
   params:
     - name: id
       in: path
@@ -11,15 +11,16 @@ http.get./lending_service_db/user/{id}:
         type: string
   responses:
     content:
-      application/json:
-        schema:
-          type: object
+      '200':
+        application/json:
+          schema:
+            type: object
 
 # CREATE
-http.post./lending_service_db/user:
+http & graphql.post./lending_service_db/user:
   summary: Create a new User
   description: Create User from database
-  fn: lending_service_db_crud.user.ts.create
+  fn: com.biz.lending_service_db.user.create
   body:
     content:
       application/json:
@@ -27,16 +28,16 @@ http.post./lending_service_db/user:
           $ref: '#/definitions/lending_service_db/User'
   responses:
     content:
-      application/json:
-        schema:
-          type: object
+      '201':
+        application/json:
+          schema:
+            type: object
 
 # UPDATE
-http.put./lending_service_db/user/{id}:
+http & graphql.put./lending_service_db/user/{id}:
   summary: Update a User
   description: Update User from database
-  fn: lending_service_db_crud.user.y_aml_fn.update
-  
+  fn: com.biz.lending_service_db.user.update
   body:
     content:
       application/json:
@@ -50,15 +51,16 @@ http.put./lending_service_db/user/{id}:
         type: string
   responses:
     content:
-      application/json:
-        schema:
-          type: object
+      '204':
+        application/json:
+          schema:
+            type: object
 
 # DELETE
-http.delete./lending_service_db/user/{id}:
+http & graphql.delete./lending_service_db/user/{id}:
   summary: Delete a User
   description: Delete User from database
-  fn: lending_service_db_crud.user.ts.delete
+  fn: com.biz.lending_service_db.user.delete
   params:
     - name: id
       in: path
@@ -67,16 +69,16 @@ http.delete./lending_service_db/user/{id}:
         type: string
   responses:
     content:
-      application/json:
-        schema:
-          type: object
+      '202':
+        application/json:
+          schema:
+            type: object
 
 # SEARCH
-http.post./lending_service_db/user/search:
+http & graphql.post./lending_service_db/user/search:
   summary: Fetch multiple User
   description: Fetch multiple User from database
-  fn: lending_service_db_crud.user.ts.search
-  
+  fn: com.biz.lending_service_db.user.search
   body:
     content:
       application/json:
@@ -84,7 +86,8 @@ http.post./lending_service_db/user/search:
           type: object
   responses:
     content:
-      application/json:
-        schema:
-          type: array
+      '200':
+        application/json:
+          schema:
+            type: array
 

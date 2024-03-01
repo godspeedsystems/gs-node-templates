@@ -1,9 +1,8 @@
 # ONE
-http.get./lending_service_db/loanproduct/{id}:
+http & graphql.get./lending_service_db/loanproduct/{id}:
   summary: Fetch LoanProduct
   description: Fetch LoanProduct from database
-  fn: lending_service_db_crud.loanproduct.ts.one
-  
+  fn: com.biz.lending_service_db.loanproduct.one
   params:
     - name: id
       in: path
@@ -12,16 +11,16 @@ http.get./lending_service_db/loanproduct/{id}:
         type: string
   responses:
     content:
-      application/json:
-        schema:
-          type: object
+      '200':
+        application/json:
+          schema:
+            type: object
 
 # CREATE
-http.post./lending_service_db/loanproduct:
+http & graphql.post./lending_service_db/loanproduct:
   summary: Create a new LoanProduct
   description: Create LoanProduct from database
-  fn: lending_service_db_crud.loanproduct.ts.create
-  
+  fn: com.biz.lending_service_db.loanproduct.create
   body:
     content:
       application/json:
@@ -29,16 +28,16 @@ http.post./lending_service_db/loanproduct:
           $ref: '#/definitions/lending_service_db/LoanProduct'
   responses:
     content:
-      application/json:
-        schema:
-          type: object
+      '201':
+        application/json:
+          schema:
+            type: object
 
 # UPDATE
-http.put./lending_service_db/loanproduct/{id}:
+http & graphql.put./lending_service_db/loanproduct/{id}:
   summary: Update a LoanProduct
   description: Update LoanProduct from database
-  fn: lending_service_db_crud.loanproduct.ts.update
-  
+  fn: com.biz.lending_service_db.loanproduct.update
   body:
     content:
       application/json:
@@ -52,16 +51,16 @@ http.put./lending_service_db/loanproduct/{id}:
         type: string
   responses:
     content:
-      application/json:
-        schema:
-          type: object
+      '204':
+        application/json:
+          schema:
+            type: object
 
 # DELETE
-http.delete./lending_service_db/loanproduct/{id}:
+http & graphql.delete./lending_service_db/loanproduct/{id}:
   summary: Delete a LoanProduct
   description: Delete LoanProduct from database
-  fn: lending_service_db_crud.loanproduct.ts.delete
-  
+  fn: com.biz.lending_service_db.loanproduct.delete
   params:
     - name: id
       in: path
@@ -70,16 +69,16 @@ http.delete./lending_service_db/loanproduct/{id}:
         type: string
   responses:
     content:
-      application/json:
-        schema:
-          type: object
+      '202':
+        application/json:
+          schema:
+            type: object
 
 # SEARCH
-http.post./lending_service_db/loanproduct/search:
+http & graphql.post./lending_service_db/loanproduct/search:
   summary: Fetch multiple LoanProduct
   description: Fetch multiple LoanProduct from database
-  fn: lending_service_db_crud.loanproduct.ts.search
-  
+  fn: com.biz.lending_service_db.loanproduct.search
   body:
     content:
       application/json:
@@ -87,7 +86,8 @@ http.post./lending_service_db/loanproduct/search:
           type: object
   responses:
     content:
-      application/json:
-        schema:
-          type: array
+      '200':
+        application/json:
+          schema:
+            type: array
 

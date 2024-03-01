@@ -1,9 +1,8 @@
 # ONE
-http.get./lending_service_db/loanapplication/{id}:
+http & graphql.get./lending_service_db/loanapplication/{id}:
   summary: Fetch LoanApplication
   description: Fetch LoanApplication from database
-  # To try with yaml work flow replace in fn name `ts` to `y_aml_fn` for eg lending_service_db.loanapplication.y_aml_fn.one 
-  fn: lending_service_db_crud.loanapplication.ts.one 
+  fn: com.biz.lending_service_db.loanapplication.one
   params:
     - name: id
       in: path
@@ -12,17 +11,16 @@ http.get./lending_service_db/loanapplication/{id}:
         type: string
   responses:
     content:
-      application/json:
-        schema:
-          type: object
+      '200':
+        application/json:
+          schema:
+            type: object
 
 # CREATE
-http.post./lending_service_db/loanapplication:
+http & graphql.post./lending_service_db/loanapplication:
   summary: Create a new LoanApplication
   description: Create LoanApplication from database
-  fn: lending_service_db_crud.loanapplication.ts.create
-  
-  authz: false
+  fn: com.biz.lending_service_db.loanapplication.create
   body:
     content:
       application/json:
@@ -30,15 +28,16 @@ http.post./lending_service_db/loanapplication:
           $ref: '#/definitions/lending_service_db/LoanApplication'
   responses:
     content:
-      application/json:
-        schema:
-          type: object
+      '201':
+        application/json:
+          schema:
+            type: object
 
 # UPDATE
-http.put./lending_service_db/loanapplication/{id}:
+http & graphql.put./lending_service_db/loanapplication/{id}:
   summary: Update a LoanApplication
   description: Update LoanApplication from database
-  fn: lending_service_db_crud.loanapplication.ts.update
+  fn: com.biz.lending_service_db.loanapplication.update
   body:
     content:
       application/json:
@@ -52,15 +51,16 @@ http.put./lending_service_db/loanapplication/{id}:
         type: string
   responses:
     content:
-      application/json:
-        schema:
-          type: object
+      '204':
+        application/json:
+          schema:
+            type: object
 
 # DELETE
-http.delete./lending_service_db/loanapplication/{id}:
+http & graphql.delete./lending_service_db/loanapplication/{id}:
   summary: Delete a LoanApplication
   description: Delete LoanApplication from database
-  fn: lending_service_db_crud.loanapplication.ts.delete
+  fn: com.biz.lending_service_db.loanapplication.delete
   params:
     - name: id
       in: path
@@ -69,15 +69,16 @@ http.delete./lending_service_db/loanapplication/{id}:
         type: string
   responses:
     content:
-      application/json:
-        schema:
-          type: object
+      '202':
+        application/json:
+          schema:
+            type: object
 
 # SEARCH
-http.post./lending_service_db/loanapplication/search:
+http & graphql.post./lending_service_db/loanapplication/search:
   summary: Fetch multiple LoanApplication
   description: Fetch multiple LoanApplication from database
-  fn: lending_service_db_crud.loanapplication.ts.search
+  fn: com.biz.lending_service_db.loanapplication.search
   body:
     content:
       application/json:
@@ -85,7 +86,8 @@ http.post./lending_service_db/loanapplication/search:
           type: object
   responses:
     content:
-      application/json:
-        schema:
-          type: array
+      '200':
+        application/json:
+          schema:
+            type: array
 
