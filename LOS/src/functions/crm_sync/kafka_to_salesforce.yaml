@@ -1,8 +1,0 @@
-summary: push scf data into salesforce
-id: scf_to_salesforce
-tasks:
-  - id: push_distributor_data_into_salesforce
-    description: Push distributor data
-    fn: datasource.salesforce_api.post./data/v56.0/sobjects/Distributor_Subscribe__e
-    args:
-      data: <% outputs.transform_scf_data.data.payload %>
