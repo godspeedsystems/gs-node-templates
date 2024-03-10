@@ -1,5 +1,0 @@
-summary: Fetch many LoanProduct
-tasks:
-  - id: lending_service_db_loanproduct_search
-    fn: datasource.lending_service_db.LoanProduct.findMany
-    args: {}

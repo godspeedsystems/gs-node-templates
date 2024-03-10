@@ -9,4 +9,6 @@ LOAN_JOURNEY:
         - kyc
           upload_document
           create_account
+my_bank:
+  auth_workflow_cookie: 'some_cookie'
           

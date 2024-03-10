@@ -1,0 +1,4 @@
+defaults:
+  on_error: #in workflow tasks, if a task has error, whether to continue to next task or not
+    continue: false
+  lang: js # fdefault scripting language. other option is coffee

@@ -109,9 +109,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  email: 'email',
-  password: 'password',
-  name: 'name'
+  pan_number: 'pan_number'
 };
 
 exports.Prisma.LoanApplicationScalarFieldEnum = {
@@ -120,15 +118,10 @@ exports.Prisma.LoanApplicationScalarFieldEnum = {
   updatedAt: 'updatedAt',
   status: 'status',
   amount: 'amount',
-  userId: 'userId',
-  loanProductId: 'loanProductId'
-};
-
-exports.Prisma.LoanProductScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  interestRate: 'interestRate',
-  termLength: 'termLength'
+  interest: 'interest',
+  duration: 'duration',
+  bank_name: 'bank_name',
+  userId: 'userId'
 };
 
 exports.Prisma.SortOrder = {
@@ -141,16 +134,10 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
-
 
 exports.Prisma.ModelName = {
   User: 'User',
-  LoanApplication: 'LoanApplication',
-  LoanProduct: 'LoanProduct'
+  LoanApplication: 'LoanApplication'
 };
 
 /**

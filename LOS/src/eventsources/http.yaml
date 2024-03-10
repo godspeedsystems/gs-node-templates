@@ -3,20 +3,20 @@ port: 3000
 
 # limits of sile size and body
 request_body_limit: 20000 #bytes
-file_size_limit: 50000 #bytes
+file_size_limit: 200000 #bytes
 
 #jwt or oauth2 settings to run by default on every event
 authn:
-  jwt:
-    secretOrKey: mysecret
-    audience: mycompany
-    issuer: mycompany
+  jwt: # best practice is to store secrets in environment variables and not hardcode here.
+    secretOrKey: <%config.jwt.secretOrKey%>
+    audience: <%config.jwt.audience%>
+    issuer: <%config.jwt.issuer%>
 
 # authorization policies to run by default on every event
 authz:
   - id: check_user_role
     fn: com.gs.transform
-    args: <%inputs.user.role === 'admin'%>
+    args: <%inputs.user.role === 'admin' || inputs.user.role === 'manager'%>
 
 # validation error handling, to transform error responses
 on_request_validation_error: validations.request.standardResponseyml

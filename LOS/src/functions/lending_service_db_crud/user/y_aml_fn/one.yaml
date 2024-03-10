@@ -4,4 +4,4 @@ tasks:
     fn: datasource.lending_service_db.User.findUnique
     args:
       where:
-        id: <% parseInt(inputs.params.id) %>
+        id: <% inputs.params.id %>

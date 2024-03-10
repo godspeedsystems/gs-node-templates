@@ -23,11 +23,6 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  * 
  */
 export type LoanApplication = $Result.DefaultSelection<Prisma.$LoanApplicationPayload>
-/**
- * Model LoanProduct
- * 
- */
-export type LoanProduct = $Result.DefaultSelection<Prisma.$LoanProductPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -181,16 +176,6 @@ export class PrismaClient<
     * ```
     */
   get loanApplication(): Prisma.LoanApplicationDelegate<ExtArgs>;
-
-  /**
-   * `prisma.loanProduct`: Exposes CRUD operations for the **LoanProduct** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more LoanProducts
-    * const loanProducts = await prisma.loanProduct.findMany()
-    * ```
-    */
-  get loanProduct(): Prisma.LoanProductDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -662,8 +647,7 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
-    LoanApplication: 'LoanApplication',
-    LoanProduct: 'LoanProduct'
+    LoanApplication: 'LoanApplication'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -680,7 +664,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'user' | 'loanApplication' | 'loanProduct'
+      modelProps: 'user' | 'loanApplication'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -813,72 +797,6 @@ export namespace Prisma {
           count: {
             args: Prisma.LoanApplicationCountArgs<ExtArgs>,
             result: $Utils.Optional<LoanApplicationCountAggregateOutputType> | number
-          }
-        }
-      }
-      LoanProduct: {
-        payload: Prisma.$LoanProductPayload<ExtArgs>
-        fields: Prisma.LoanProductFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.LoanProductFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$LoanProductPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.LoanProductFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$LoanProductPayload>
-          }
-          findFirst: {
-            args: Prisma.LoanProductFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$LoanProductPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.LoanProductFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$LoanProductPayload>
-          }
-          findMany: {
-            args: Prisma.LoanProductFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$LoanProductPayload>[]
-          }
-          create: {
-            args: Prisma.LoanProductCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$LoanProductPayload>
-          }
-          createMany: {
-            args: Prisma.LoanProductCreateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          delete: {
-            args: Prisma.LoanProductDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$LoanProductPayload>
-          }
-          update: {
-            args: Prisma.LoanProductUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$LoanProductPayload>
-          }
-          deleteMany: {
-            args: Prisma.LoanProductDeleteManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          updateMany: {
-            args: Prisma.LoanProductUpdateManyArgs<ExtArgs>,
-            result: Prisma.BatchPayload
-          }
-          upsert: {
-            args: Prisma.LoanProductUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$LoanProductPayload>
-          }
-          aggregate: {
-            args: Prisma.LoanProductAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateLoanProduct>
-          }
-          groupBy: {
-            args: Prisma.LoanProductGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<LoanProductGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.LoanProductCountArgs<ExtArgs>,
-            result: $Utils.Optional<LoanProductCountAggregateOutputType> | number
           }
         }
       }
@@ -1071,40 +989,6 @@ export namespace Prisma {
 
 
   /**
-   * Count Type LoanProductCountOutputType
-   */
-
-  export type LoanProductCountOutputType = {
-    loanApplications: number
-  }
-
-  export type LoanProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    loanApplications?: boolean | LoanProductCountOutputTypeCountLoanApplicationsArgs
-  }
-
-  // Custom InputTypes
-
-  /**
-   * LoanProductCountOutputType without action
-   */
-  export type LoanProductCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LoanProductCountOutputType
-     */
-    select?: LoanProductCountOutputTypeSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * LoanProductCountOutputType without action
-   */
-  export type LoanProductCountOutputTypeCountLoanApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: LoanApplicationWhereInput
-  }
-
-
-
-  /**
    * Models
    */
 
@@ -1130,23 +1014,17 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: number | null
-    email: string | null
-    password: string | null
-    name: string | null
+    pan_number: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: number | null
-    email: string | null
-    password: string | null
-    name: string | null
+    pan_number: string | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
-    email: number
-    password: number
-    name: number
+    pan_number: number
     _all: number
   }
 
@@ -1161,23 +1039,17 @@ export namespace Prisma {
 
   export type UserMinAggregateInputType = {
     id?: true
-    email?: true
-    password?: true
-    name?: true
+    pan_number?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
-    email?: true
-    password?: true
-    name?: true
+    pan_number?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
-    email?: true
-    password?: true
-    name?: true
+    pan_number?: true
     _all?: true
   }
 
@@ -1269,9 +1141,7 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: number
-    email: string
-    password: string
-    name: string | null
+    pan_number: string
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1295,18 +1165,14 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    email?: boolean
-    password?: boolean
-    name?: boolean
+    pan_number?: boolean
     loanApplications?: boolean | User$loanApplicationsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
-    email?: boolean
-    password?: boolean
-    name?: boolean
+    pan_number?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1322,9 +1188,10 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      email: string
-      password: string
-      name: string | null
+      /**
+       * @encrypted
+       */
+      pan_number: string
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1721,9 +1588,7 @@ export namespace Prisma {
    */ 
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'Int'>
-    readonly email: FieldRef<"User", 'String'>
-    readonly password: FieldRef<"User", 'String'>
-    readonly name: FieldRef<"User", 'String'>
+    readonly pan_number: FieldRef<"User", 'String'>
   }
     
 
@@ -2087,15 +1952,17 @@ export namespace Prisma {
   export type LoanApplicationAvgAggregateOutputType = {
     id: number | null
     amount: number | null
+    interest: number | null
+    duration: number | null
     userId: number | null
-    loanProductId: number | null
   }
 
   export type LoanApplicationSumAggregateOutputType = {
     id: number | null
     amount: number | null
+    interest: number | null
+    duration: number | null
     userId: number | null
-    loanProductId: number | null
   }
 
   export type LoanApplicationMinAggregateOutputType = {
@@ -2104,8 +1971,10 @@ export namespace Prisma {
     updatedAt: Date | null
     status: string | null
     amount: number | null
+    interest: number | null
+    duration: number | null
+    bank_name: string | null
     userId: number | null
-    loanProductId: number | null
   }
 
   export type LoanApplicationMaxAggregateOutputType = {
@@ -2114,8 +1983,10 @@ export namespace Prisma {
     updatedAt: Date | null
     status: string | null
     amount: number | null
+    interest: number | null
+    duration: number | null
+    bank_name: string | null
     userId: number | null
-    loanProductId: number | null
   }
 
   export type LoanApplicationCountAggregateOutputType = {
@@ -2124,8 +1995,10 @@ export namespace Prisma {
     updatedAt: number
     status: number
     amount: number
+    interest: number
+    duration: number
+    bank_name: number
     userId: number
-    loanProductId: number
     _all: number
   }
 
@@ -2133,15 +2006,17 @@ export namespace Prisma {
   export type LoanApplicationAvgAggregateInputType = {
     id?: true
     amount?: true
+    interest?: true
+    duration?: true
     userId?: true
-    loanProductId?: true
   }
 
   export type LoanApplicationSumAggregateInputType = {
     id?: true
     amount?: true
+    interest?: true
+    duration?: true
     userId?: true
-    loanProductId?: true
   }
 
   export type LoanApplicationMinAggregateInputType = {
@@ -2150,8 +2025,10 @@ export namespace Prisma {
     updatedAt?: true
     status?: true
     amount?: true
+    interest?: true
+    duration?: true
+    bank_name?: true
     userId?: true
-    loanProductId?: true
   }
 
   export type LoanApplicationMaxAggregateInputType = {
@@ -2160,8 +2037,10 @@ export namespace Prisma {
     updatedAt?: true
     status?: true
     amount?: true
+    interest?: true
+    duration?: true
+    bank_name?: true
     userId?: true
-    loanProductId?: true
   }
 
   export type LoanApplicationCountAggregateInputType = {
@@ -2170,8 +2049,10 @@ export namespace Prisma {
     updatedAt?: true
     status?: true
     amount?: true
+    interest?: true
+    duration?: true
+    bank_name?: true
     userId?: true
-    loanProductId?: true
     _all?: true
   }
 
@@ -2267,8 +2148,10 @@ export namespace Prisma {
     updatedAt: Date
     status: string
     amount: number
+    interest: number
+    duration: number
+    bank_name: string
     userId: number
-    loanProductId: number
     _count: LoanApplicationCountAggregateOutputType | null
     _avg: LoanApplicationAvgAggregateOutputType | null
     _sum: LoanApplicationSumAggregateOutputType | null
@@ -2296,10 +2179,11 @@ export namespace Prisma {
     updatedAt?: boolean
     status?: boolean
     amount?: boolean
+    interest?: boolean
+    duration?: boolean
+    bank_name?: boolean
     userId?: boolean
-    loanProductId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    loanProduct?: boolean | LoanProductDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["loanApplication"]>
 
   export type LoanApplicationSelectScalar = {
@@ -2308,13 +2192,14 @@ export namespace Prisma {
     updatedAt?: boolean
     status?: boolean
     amount?: boolean
+    interest?: boolean
+    duration?: boolean
+    bank_name?: boolean
     userId?: boolean
-    loanProductId?: boolean
   }
 
   export type LoanApplicationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    loanProduct?: boolean | LoanProductDefaultArgs<ExtArgs>
   }
 
 
@@ -2322,7 +2207,6 @@ export namespace Prisma {
     name: "LoanApplication"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      loanProduct: Prisma.$LoanProductPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -2330,8 +2214,10 @@ export namespace Prisma {
       updatedAt: Date
       status: string
       amount: number
+      interest: number
+      duration: number
+      bank_name: string
       userId: number
-      loanProductId: number
     }, ExtArgs["result"]["loanApplication"]>
     composites: {}
   }
@@ -2699,8 +2585,6 @@ export namespace Prisma {
 
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
-    loanProduct<T extends LoanProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LoanProductDefaultArgs<ExtArgs>>): Prisma__LoanProductClient<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2734,8 +2618,10 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"LoanApplication", 'DateTime'>
     readonly status: FieldRef<"LoanApplication", 'String'>
     readonly amount: FieldRef<"LoanApplication", 'Float'>
+    readonly interest: FieldRef<"LoanApplication", 'Float'>
+    readonly duration: FieldRef<"LoanApplication", 'Int'>
+    readonly bank_name: FieldRef<"LoanApplication", 'String'>
     readonly userId: FieldRef<"LoanApplication", 'Int'>
-    readonly loanProductId: FieldRef<"LoanApplication", 'Int'>
   }
     
 
@@ -3064,978 +2950,6 @@ export namespace Prisma {
 
 
   /**
-   * Model LoanProduct
-   */
-
-  export type AggregateLoanProduct = {
-    _count: LoanProductCountAggregateOutputType | null
-    _avg: LoanProductAvgAggregateOutputType | null
-    _sum: LoanProductSumAggregateOutputType | null
-    _min: LoanProductMinAggregateOutputType | null
-    _max: LoanProductMaxAggregateOutputType | null
-  }
-
-  export type LoanProductAvgAggregateOutputType = {
-    id: number | null
-    interestRate: number | null
-    termLength: number | null
-  }
-
-  export type LoanProductSumAggregateOutputType = {
-    id: number | null
-    interestRate: number | null
-    termLength: number | null
-  }
-
-  export type LoanProductMinAggregateOutputType = {
-    id: number | null
-    name: string | null
-    interestRate: number | null
-    termLength: number | null
-  }
-
-  export type LoanProductMaxAggregateOutputType = {
-    id: number | null
-    name: string | null
-    interestRate: number | null
-    termLength: number | null
-  }
-
-  export type LoanProductCountAggregateOutputType = {
-    id: number
-    name: number
-    interestRate: number
-    termLength: number
-    _all: number
-  }
-
-
-  export type LoanProductAvgAggregateInputType = {
-    id?: true
-    interestRate?: true
-    termLength?: true
-  }
-
-  export type LoanProductSumAggregateInputType = {
-    id?: true
-    interestRate?: true
-    termLength?: true
-  }
-
-  export type LoanProductMinAggregateInputType = {
-    id?: true
-    name?: true
-    interestRate?: true
-    termLength?: true
-  }
-
-  export type LoanProductMaxAggregateInputType = {
-    id?: true
-    name?: true
-    interestRate?: true
-    termLength?: true
-  }
-
-  export type LoanProductCountAggregateInputType = {
-    id?: true
-    name?: true
-    interestRate?: true
-    termLength?: true
-    _all?: true
-  }
-
-  export type LoanProductAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which LoanProduct to aggregate.
-     */
-    where?: LoanProductWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of LoanProducts to fetch.
-     */
-    orderBy?: LoanProductOrderByWithRelationInput | LoanProductOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: LoanProductWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` LoanProducts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` LoanProducts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned LoanProducts
-    **/
-    _count?: true | LoanProductCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: LoanProductAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: LoanProductSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: LoanProductMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: LoanProductMaxAggregateInputType
-  }
-
-  export type GetLoanProductAggregateType<T extends LoanProductAggregateArgs> = {
-        [P in keyof T & keyof AggregateLoanProduct]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateLoanProduct[P]>
-      : GetScalarType<T[P], AggregateLoanProduct[P]>
-  }
-
-
-
-
-  export type LoanProductGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: LoanProductWhereInput
-    orderBy?: LoanProductOrderByWithAggregationInput | LoanProductOrderByWithAggregationInput[]
-    by: LoanProductScalarFieldEnum[] | LoanProductScalarFieldEnum
-    having?: LoanProductScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: LoanProductCountAggregateInputType | true
-    _avg?: LoanProductAvgAggregateInputType
-    _sum?: LoanProductSumAggregateInputType
-    _min?: LoanProductMinAggregateInputType
-    _max?: LoanProductMaxAggregateInputType
-  }
-
-  export type LoanProductGroupByOutputType = {
-    id: number
-    name: string
-    interestRate: number
-    termLength: number
-    _count: LoanProductCountAggregateOutputType | null
-    _avg: LoanProductAvgAggregateOutputType | null
-    _sum: LoanProductSumAggregateOutputType | null
-    _min: LoanProductMinAggregateOutputType | null
-    _max: LoanProductMaxAggregateOutputType | null
-  }
-
-  type GetLoanProductGroupByPayload<T extends LoanProductGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<LoanProductGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof LoanProductGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], LoanProductGroupByOutputType[P]>
-            : GetScalarType<T[P], LoanProductGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type LoanProductSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    interestRate?: boolean
-    termLength?: boolean
-    loanApplications?: boolean | LoanProduct$loanApplicationsArgs<ExtArgs>
-    _count?: boolean | LoanProductCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["loanProduct"]>
-
-  export type LoanProductSelectScalar = {
-    id?: boolean
-    name?: boolean
-    interestRate?: boolean
-    termLength?: boolean
-  }
-
-  export type LoanProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    loanApplications?: boolean | LoanProduct$loanApplicationsArgs<ExtArgs>
-    _count?: boolean | LoanProductCountOutputTypeDefaultArgs<ExtArgs>
-  }
-
-
-  export type $LoanProductPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "LoanProduct"
-    objects: {
-      loanApplications: Prisma.$LoanApplicationPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      name: string
-      interestRate: number
-      termLength: number
-    }, ExtArgs["result"]["loanProduct"]>
-    composites: {}
-  }
-
-
-  type LoanProductGetPayload<S extends boolean | null | undefined | LoanProductDefaultArgs> = $Result.GetResult<Prisma.$LoanProductPayload, S>
-
-  type LoanProductCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<LoanProductFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: LoanProductCountAggregateInputType | true
-    }
-
-  export interface LoanProductDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LoanProduct'], meta: { name: 'LoanProduct' } }
-    /**
-     * Find zero or one LoanProduct that matches the filter.
-     * @param {LoanProductFindUniqueArgs} args - Arguments to find a LoanProduct
-     * @example
-     * // Get one LoanProduct
-     * const loanProduct = await prisma.loanProduct.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends LoanProductFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, LoanProductFindUniqueArgs<ExtArgs>>
-    ): Prisma__LoanProductClient<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
-
-    /**
-     * Find one LoanProduct that matches the filter or throw an error  with `error.code='P2025'` 
-     *     if no matches were found.
-     * @param {LoanProductFindUniqueOrThrowArgs} args - Arguments to find a LoanProduct
-     * @example
-     * // Get one LoanProduct
-     * const loanProduct = await prisma.loanProduct.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUniqueOrThrow<T extends LoanProductFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, LoanProductFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__LoanProductClient<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find the first LoanProduct that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {LoanProductFindFirstArgs} args - Arguments to find a LoanProduct
-     * @example
-     * // Get one LoanProduct
-     * const loanProduct = await prisma.loanProduct.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends LoanProductFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, LoanProductFindFirstArgs<ExtArgs>>
-    ): Prisma__LoanProductClient<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
-
-    /**
-     * Find the first LoanProduct that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {LoanProductFindFirstOrThrowArgs} args - Arguments to find a LoanProduct
-     * @example
-     * // Get one LoanProduct
-     * const loanProduct = await prisma.loanProduct.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirstOrThrow<T extends LoanProductFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, LoanProductFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__LoanProductClient<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
-
-    /**
-     * Find zero or more LoanProducts that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {LoanProductFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all LoanProducts
-     * const loanProducts = await prisma.loanProduct.findMany()
-     * 
-     * // Get first 10 LoanProducts
-     * const loanProducts = await prisma.loanProduct.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const loanProductWithIdOnly = await prisma.loanProduct.findMany({ select: { id: true } })
-     * 
-    **/
-    findMany<T extends LoanProductFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, LoanProductFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, 'findMany'>>
-
-    /**
-     * Create a LoanProduct.
-     * @param {LoanProductCreateArgs} args - Arguments to create a LoanProduct.
-     * @example
-     * // Create one LoanProduct
-     * const LoanProduct = await prisma.loanProduct.create({
-     *   data: {
-     *     // ... data to create a LoanProduct
-     *   }
-     * })
-     * 
-    **/
-    create<T extends LoanProductCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, LoanProductCreateArgs<ExtArgs>>
-    ): Prisma__LoanProductClient<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
-
-    /**
-     * Create many LoanProducts.
-     *     @param {LoanProductCreateManyArgs} args - Arguments to create many LoanProducts.
-     *     @example
-     *     // Create many LoanProducts
-     *     const loanProduct = await prisma.loanProduct.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends LoanProductCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, LoanProductCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a LoanProduct.
-     * @param {LoanProductDeleteArgs} args - Arguments to delete one LoanProduct.
-     * @example
-     * // Delete one LoanProduct
-     * const LoanProduct = await prisma.loanProduct.delete({
-     *   where: {
-     *     // ... filter to delete one LoanProduct
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends LoanProductDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, LoanProductDeleteArgs<ExtArgs>>
-    ): Prisma__LoanProductClient<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
-
-    /**
-     * Update one LoanProduct.
-     * @param {LoanProductUpdateArgs} args - Arguments to update one LoanProduct.
-     * @example
-     * // Update one LoanProduct
-     * const loanProduct = await prisma.loanProduct.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends LoanProductUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, LoanProductUpdateArgs<ExtArgs>>
-    ): Prisma__LoanProductClient<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
-
-    /**
-     * Delete zero or more LoanProducts.
-     * @param {LoanProductDeleteManyArgs} args - Arguments to filter LoanProducts to delete.
-     * @example
-     * // Delete a few LoanProducts
-     * const { count } = await prisma.loanProduct.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends LoanProductDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, LoanProductDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more LoanProducts.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {LoanProductUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many LoanProducts
-     * const loanProduct = await prisma.loanProduct.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends LoanProductUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, LoanProductUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one LoanProduct.
-     * @param {LoanProductUpsertArgs} args - Arguments to update or create a LoanProduct.
-     * @example
-     * // Update or create a LoanProduct
-     * const loanProduct = await prisma.loanProduct.upsert({
-     *   create: {
-     *     // ... data to create a LoanProduct
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the LoanProduct we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends LoanProductUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, LoanProductUpsertArgs<ExtArgs>>
-    ): Prisma__LoanProductClient<$Result.GetResult<Prisma.$LoanProductPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
-
-    /**
-     * Count the number of LoanProducts.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {LoanProductCountArgs} args - Arguments to filter LoanProducts to count.
-     * @example
-     * // Count the number of LoanProducts
-     * const count = await prisma.loanProduct.count({
-     *   where: {
-     *     // ... the filter for the LoanProducts we want to count
-     *   }
-     * })
-    **/
-    count<T extends LoanProductCountArgs>(
-      args?: Subset<T, LoanProductCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], LoanProductCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a LoanProduct.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {LoanProductAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends LoanProductAggregateArgs>(args: Subset<T, LoanProductAggregateArgs>): Prisma.PrismaPromise<GetLoanProductAggregateType<T>>
-
-    /**
-     * Group by LoanProduct.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {LoanProductGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends LoanProductGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: LoanProductGroupByArgs['orderBy'] }
-        : { orderBy?: LoanProductGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, LoanProductGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLoanProductGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the LoanProduct model
-   */
-  readonly fields: LoanProductFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for LoanProduct.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__LoanProductClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-
-    loanApplications<T extends LoanProduct$loanApplicationsArgs<ExtArgs> = {}>(args?: Subset<T, LoanProduct$loanApplicationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LoanApplicationPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-
-
-  /**
-   * Fields of the LoanProduct model
-   */ 
-  interface LoanProductFieldRefs {
-    readonly id: FieldRef<"LoanProduct", 'Int'>
-    readonly name: FieldRef<"LoanProduct", 'String'>
-    readonly interestRate: FieldRef<"LoanProduct", 'Float'>
-    readonly termLength: FieldRef<"LoanProduct", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-
-  /**
-   * LoanProduct findUnique
-   */
-  export type LoanProductFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LoanProduct
-     */
-    select?: LoanProductSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: LoanProductInclude<ExtArgs> | null
-    /**
-     * Filter, which LoanProduct to fetch.
-     */
-    where: LoanProductWhereUniqueInput
-  }
-
-
-  /**
-   * LoanProduct findUniqueOrThrow
-   */
-  export type LoanProductFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LoanProduct
-     */
-    select?: LoanProductSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: LoanProductInclude<ExtArgs> | null
-    /**
-     * Filter, which LoanProduct to fetch.
-     */
-    where: LoanProductWhereUniqueInput
-  }
-
-
-  /**
-   * LoanProduct findFirst
-   */
-  export type LoanProductFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LoanProduct
-     */
-    select?: LoanProductSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: LoanProductInclude<ExtArgs> | null
-    /**
-     * Filter, which LoanProduct to fetch.
-     */
-    where?: LoanProductWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of LoanProducts to fetch.
-     */
-    orderBy?: LoanProductOrderByWithRelationInput | LoanProductOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for LoanProducts.
-     */
-    cursor?: LoanProductWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` LoanProducts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` LoanProducts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of LoanProducts.
-     */
-    distinct?: LoanProductScalarFieldEnum | LoanProductScalarFieldEnum[]
-  }
-
-
-  /**
-   * LoanProduct findFirstOrThrow
-   */
-  export type LoanProductFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LoanProduct
-     */
-    select?: LoanProductSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: LoanProductInclude<ExtArgs> | null
-    /**
-     * Filter, which LoanProduct to fetch.
-     */
-    where?: LoanProductWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of LoanProducts to fetch.
-     */
-    orderBy?: LoanProductOrderByWithRelationInput | LoanProductOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for LoanProducts.
-     */
-    cursor?: LoanProductWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` LoanProducts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` LoanProducts.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of LoanProducts.
-     */
-    distinct?: LoanProductScalarFieldEnum | LoanProductScalarFieldEnum[]
-  }
-
-
-  /**
-   * LoanProduct findMany
-   */
-  export type LoanProductFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LoanProduct
-     */
-    select?: LoanProductSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: LoanProductInclude<ExtArgs> | null
-    /**
-     * Filter, which LoanProducts to fetch.
-     */
-    where?: LoanProductWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of LoanProducts to fetch.
-     */
-    orderBy?: LoanProductOrderByWithRelationInput | LoanProductOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing LoanProducts.
-     */
-    cursor?: LoanProductWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` LoanProducts from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` LoanProducts.
-     */
-    skip?: number
-    distinct?: LoanProductScalarFieldEnum | LoanProductScalarFieldEnum[]
-  }
-
-
-  /**
-   * LoanProduct create
-   */
-  export type LoanProductCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LoanProduct
-     */
-    select?: LoanProductSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: LoanProductInclude<ExtArgs> | null
-    /**
-     * The data needed to create a LoanProduct.
-     */
-    data: XOR<LoanProductCreateInput, LoanProductUncheckedCreateInput>
-  }
-
-
-  /**
-   * LoanProduct createMany
-   */
-  export type LoanProductCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many LoanProducts.
-     */
-    data: LoanProductCreateManyInput | LoanProductCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * LoanProduct update
-   */
-  export type LoanProductUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LoanProduct
-     */
-    select?: LoanProductSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: LoanProductInclude<ExtArgs> | null
-    /**
-     * The data needed to update a LoanProduct.
-     */
-    data: XOR<LoanProductUpdateInput, LoanProductUncheckedUpdateInput>
-    /**
-     * Choose, which LoanProduct to update.
-     */
-    where: LoanProductWhereUniqueInput
-  }
-
-
-  /**
-   * LoanProduct updateMany
-   */
-  export type LoanProductUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update LoanProducts.
-     */
-    data: XOR<LoanProductUpdateManyMutationInput, LoanProductUncheckedUpdateManyInput>
-    /**
-     * Filter which LoanProducts to update
-     */
-    where?: LoanProductWhereInput
-  }
-
-
-  /**
-   * LoanProduct upsert
-   */
-  export type LoanProductUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LoanProduct
-     */
-    select?: LoanProductSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: LoanProductInclude<ExtArgs> | null
-    /**
-     * The filter to search for the LoanProduct to update in case it exists.
-     */
-    where: LoanProductWhereUniqueInput
-    /**
-     * In case the LoanProduct found by the `where` argument doesn't exist, create a new LoanProduct with this data.
-     */
-    create: XOR<LoanProductCreateInput, LoanProductUncheckedCreateInput>
-    /**
-     * In case the LoanProduct was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<LoanProductUpdateInput, LoanProductUncheckedUpdateInput>
-  }
-
-
-  /**
-   * LoanProduct delete
-   */
-  export type LoanProductDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LoanProduct
-     */
-    select?: LoanProductSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: LoanProductInclude<ExtArgs> | null
-    /**
-     * Filter which LoanProduct to delete.
-     */
-    where: LoanProductWhereUniqueInput
-  }
-
-
-  /**
-   * LoanProduct deleteMany
-   */
-  export type LoanProductDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which LoanProducts to delete
-     */
-    where?: LoanProductWhereInput
-  }
-
-
-  /**
-   * LoanProduct.loanApplications
-   */
-  export type LoanProduct$loanApplicationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LoanApplication
-     */
-    select?: LoanApplicationSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: LoanApplicationInclude<ExtArgs> | null
-    where?: LoanApplicationWhereInput
-    orderBy?: LoanApplicationOrderByWithRelationInput | LoanApplicationOrderByWithRelationInput[]
-    cursor?: LoanApplicationWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: LoanApplicationScalarFieldEnum | LoanApplicationScalarFieldEnum[]
-  }
-
-
-  /**
-   * LoanProduct without action
-   */
-  export type LoanProductDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the LoanProduct
-     */
-    select?: LoanProductSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: LoanProductInclude<ExtArgs> | null
-  }
-
-
-
-  /**
    * Enums
    */
 
@@ -4051,9 +2965,7 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
-    email: 'email',
-    password: 'password',
-    name: 'name'
+    pan_number: 'pan_number'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -4065,21 +2977,13 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     status: 'status',
     amount: 'amount',
-    userId: 'userId',
-    loanProductId: 'loanProductId'
+    interest: 'interest',
+    duration: 'duration',
+    bank_name: 'bank_name',
+    userId: 'userId'
   };
 
   export type LoanApplicationScalarFieldEnum = (typeof LoanApplicationScalarFieldEnum)[keyof typeof LoanApplicationScalarFieldEnum]
-
-
-  export const LoanProductScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    interestRate: 'interestRate',
-    termLength: 'termLength'
-  };
-
-  export type LoanProductScalarFieldEnum = (typeof LoanProductScalarFieldEnum)[keyof typeof LoanProductScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4096,14 +3000,6 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -4175,36 +3071,28 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: IntFilter<"User"> | number
-    email?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
-    name?: StringNullableFilter<"User"> | string | null
+    pan_number?: StringFilter<"User"> | string
     loanApplications?: LoanApplicationListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
-    name?: SortOrderInput | SortOrder
+    pan_number?: SortOrder
     loanApplications?: LoanApplicationOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    email?: string
+    pan_number?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    password?: StringFilter<"User"> | string
-    name?: StringNullableFilter<"User"> | string | null
     loanApplications?: LoanApplicationListRelationFilter
-  }, "id" | "email">
+  }, "id" | "pan_number">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
-    name?: SortOrderInput | SortOrder
+    pan_number?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -4217,9 +3105,7 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"User"> | number
-    email?: StringWithAggregatesFilter<"User"> | string
-    password?: StringWithAggregatesFilter<"User"> | string
-    name?: StringNullableWithAggregatesFilter<"User"> | string | null
+    pan_number?: StringWithAggregatesFilter<"User"> | string
   }
 
   export type LoanApplicationWhereInput = {
@@ -4231,10 +3117,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"LoanApplication"> | Date | string
     status?: StringFilter<"LoanApplication"> | string
     amount?: FloatFilter<"LoanApplication"> | number
+    interest?: FloatFilter<"LoanApplication"> | number
+    duration?: IntFilter<"LoanApplication"> | number
+    bank_name?: StringFilter<"LoanApplication"> | string
     userId?: IntFilter<"LoanApplication"> | number
-    loanProductId?: IntFilter<"LoanApplication"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
-    loanProduct?: XOR<LoanProductRelationFilter, LoanProductWhereInput>
   }
 
   export type LoanApplicationOrderByWithRelationInput = {
@@ -4243,10 +3130,11 @@ export namespace Prisma {
     updatedAt?: SortOrder
     status?: SortOrder
     amount?: SortOrder
+    interest?: SortOrder
+    duration?: SortOrder
+    bank_name?: SortOrder
     userId?: SortOrder
-    loanProductId?: SortOrder
     user?: UserOrderByWithRelationInput
-    loanProduct?: LoanProductOrderByWithRelationInput
   }
 
   export type LoanApplicationWhereUniqueInput = Prisma.AtLeast<{
@@ -4258,10 +3146,11 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"LoanApplication"> | Date | string
     status?: StringFilter<"LoanApplication"> | string
     amount?: FloatFilter<"LoanApplication"> | number
+    interest?: FloatFilter<"LoanApplication"> | number
+    duration?: IntFilter<"LoanApplication"> | number
+    bank_name?: StringFilter<"LoanApplication"> | string
     userId?: IntFilter<"LoanApplication"> | number
-    loanProductId?: IntFilter<"LoanApplication"> | number
     user?: XOR<UserRelationFilter, UserWhereInput>
-    loanProduct?: XOR<LoanProductRelationFilter, LoanProductWhereInput>
   }, "id">
 
   export type LoanApplicationOrderByWithAggregationInput = {
@@ -4270,8 +3159,10 @@ export namespace Prisma {
     updatedAt?: SortOrder
     status?: SortOrder
     amount?: SortOrder
+    interest?: SortOrder
+    duration?: SortOrder
+    bank_name?: SortOrder
     userId?: SortOrder
-    loanProductId?: SortOrder
     _count?: LoanApplicationCountOrderByAggregateInput
     _avg?: LoanApplicationAvgOrderByAggregateInput
     _max?: LoanApplicationMaxOrderByAggregateInput
@@ -4288,110 +3179,46 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"LoanApplication"> | Date | string
     status?: StringWithAggregatesFilter<"LoanApplication"> | string
     amount?: FloatWithAggregatesFilter<"LoanApplication"> | number
+    interest?: FloatWithAggregatesFilter<"LoanApplication"> | number
+    duration?: IntWithAggregatesFilter<"LoanApplication"> | number
+    bank_name?: StringWithAggregatesFilter<"LoanApplication"> | string
     userId?: IntWithAggregatesFilter<"LoanApplication"> | number
-    loanProductId?: IntWithAggregatesFilter<"LoanApplication"> | number
-  }
-
-  export type LoanProductWhereInput = {
-    AND?: LoanProductWhereInput | LoanProductWhereInput[]
-    OR?: LoanProductWhereInput[]
-    NOT?: LoanProductWhereInput | LoanProductWhereInput[]
-    id?: IntFilter<"LoanProduct"> | number
-    name?: StringFilter<"LoanProduct"> | string
-    interestRate?: FloatFilter<"LoanProduct"> | number
-    termLength?: IntFilter<"LoanProduct"> | number
-    loanApplications?: LoanApplicationListRelationFilter
-  }
-
-  export type LoanProductOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    interestRate?: SortOrder
-    termLength?: SortOrder
-    loanApplications?: LoanApplicationOrderByRelationAggregateInput
-  }
-
-  export type LoanProductWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: LoanProductWhereInput | LoanProductWhereInput[]
-    OR?: LoanProductWhereInput[]
-    NOT?: LoanProductWhereInput | LoanProductWhereInput[]
-    name?: StringFilter<"LoanProduct"> | string
-    interestRate?: FloatFilter<"LoanProduct"> | number
-    termLength?: IntFilter<"LoanProduct"> | number
-    loanApplications?: LoanApplicationListRelationFilter
-  }, "id">
-
-  export type LoanProductOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    interestRate?: SortOrder
-    termLength?: SortOrder
-    _count?: LoanProductCountOrderByAggregateInput
-    _avg?: LoanProductAvgOrderByAggregateInput
-    _max?: LoanProductMaxOrderByAggregateInput
-    _min?: LoanProductMinOrderByAggregateInput
-    _sum?: LoanProductSumOrderByAggregateInput
-  }
-
-  export type LoanProductScalarWhereWithAggregatesInput = {
-    AND?: LoanProductScalarWhereWithAggregatesInput | LoanProductScalarWhereWithAggregatesInput[]
-    OR?: LoanProductScalarWhereWithAggregatesInput[]
-    NOT?: LoanProductScalarWhereWithAggregatesInput | LoanProductScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"LoanProduct"> | number
-    name?: StringWithAggregatesFilter<"LoanProduct"> | string
-    interestRate?: FloatWithAggregatesFilter<"LoanProduct"> | number
-    termLength?: IntWithAggregatesFilter<"LoanProduct"> | number
   }
 
   export type UserCreateInput = {
-    email: string
-    password: string
-    name?: string | null
+    pan_number: string
     loanApplications?: LoanApplicationCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: number
-    email: string
-    password: string
-    name?: string | null
+    pan_number: string
     loanApplications?: LoanApplicationUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    pan_number?: StringFieldUpdateOperationsInput | string
     loanApplications?: LoanApplicationUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    pan_number?: StringFieldUpdateOperationsInput | string
     loanApplications?: LoanApplicationUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: number
-    email: string
-    password: string
-    name?: string | null
+    pan_number: string
   }
 
   export type UserUpdateManyMutationInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    pan_number?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    pan_number?: StringFieldUpdateOperationsInput | string
   }
 
   export type LoanApplicationCreateInput = {
@@ -4399,8 +3226,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     status: string
     amount: number
+    interest: number
+    duration: number
+    bank_name: string
     user: UserCreateNestedOneWithoutLoanApplicationsInput
-    loanProduct: LoanProductCreateNestedOneWithoutLoanApplicationsInput
   }
 
   export type LoanApplicationUncheckedCreateInput = {
@@ -4409,8 +3238,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     status: string
     amount: number
+    interest: number
+    duration: number
+    bank_name: string
     userId: number
-    loanProductId: number
   }
 
   export type LoanApplicationUpdateInput = {
@@ -4418,8 +3249,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
+    interest?: FloatFieldUpdateOperationsInput | number
+    duration?: IntFieldUpdateOperationsInput | number
+    bank_name?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutLoanApplicationsNestedInput
-    loanProduct?: LoanProductUpdateOneRequiredWithoutLoanApplicationsNestedInput
   }
 
   export type LoanApplicationUncheckedUpdateInput = {
@@ -4428,8 +3261,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
+    interest?: FloatFieldUpdateOperationsInput | number
+    duration?: IntFieldUpdateOperationsInput | number
+    bank_name?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
-    loanProductId?: IntFieldUpdateOperationsInput | number
   }
 
   export type LoanApplicationCreateManyInput = {
@@ -4438,8 +3273,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     status: string
     amount: number
+    interest: number
+    duration: number
+    bank_name: string
     userId: number
-    loanProductId: number
   }
 
   export type LoanApplicationUpdateManyMutationInput = {
@@ -4447,6 +3284,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
+    interest?: FloatFieldUpdateOperationsInput | number
+    duration?: IntFieldUpdateOperationsInput | number
+    bank_name?: StringFieldUpdateOperationsInput | string
   }
 
   export type LoanApplicationUncheckedUpdateManyInput = {
@@ -4455,58 +3295,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
+    interest?: FloatFieldUpdateOperationsInput | number
+    duration?: IntFieldUpdateOperationsInput | number
+    bank_name?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
-    loanProductId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type LoanProductCreateInput = {
-    name: string
-    interestRate: number
-    termLength: number
-    loanApplications?: LoanApplicationCreateNestedManyWithoutLoanProductInput
-  }
-
-  export type LoanProductUncheckedCreateInput = {
-    id?: number
-    name: string
-    interestRate: number
-    termLength: number
-    loanApplications?: LoanApplicationUncheckedCreateNestedManyWithoutLoanProductInput
-  }
-
-  export type LoanProductUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    interestRate?: FloatFieldUpdateOperationsInput | number
-    termLength?: IntFieldUpdateOperationsInput | number
-    loanApplications?: LoanApplicationUpdateManyWithoutLoanProductNestedInput
-  }
-
-  export type LoanProductUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    interestRate?: FloatFieldUpdateOperationsInput | number
-    termLength?: IntFieldUpdateOperationsInput | number
-    loanApplications?: LoanApplicationUncheckedUpdateManyWithoutLoanProductNestedInput
-  }
-
-  export type LoanProductCreateManyInput = {
-    id?: number
-    name: string
-    interestRate: number
-    termLength: number
-  }
-
-  export type LoanProductUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    interestRate?: FloatFieldUpdateOperationsInput | number
-    termLength?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type LoanProductUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    interestRate?: FloatFieldUpdateOperationsInput | number
-    termLength?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -4535,30 +3327,10 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type LoanApplicationListRelationFilter = {
     every?: LoanApplicationWhereInput
     some?: LoanApplicationWhereInput
     none?: LoanApplicationWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type LoanApplicationOrderByRelationAggregateInput = {
@@ -4567,9 +3339,7 @@ export namespace Prisma {
 
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
-    name?: SortOrder
+    pan_number?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -4578,16 +3348,12 @@ export namespace Prisma {
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
-    name?: SortOrder
+    pan_number?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
-    name?: SortOrder
+    pan_number?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -4628,24 +3394,6 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -4673,26 +3421,24 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
-  export type LoanProductRelationFilter = {
-    is?: LoanProductWhereInput
-    isNot?: LoanProductWhereInput
-  }
-
   export type LoanApplicationCountOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     status?: SortOrder
     amount?: SortOrder
+    interest?: SortOrder
+    duration?: SortOrder
+    bank_name?: SortOrder
     userId?: SortOrder
-    loanProductId?: SortOrder
   }
 
   export type LoanApplicationAvgOrderByAggregateInput = {
     id?: SortOrder
     amount?: SortOrder
+    interest?: SortOrder
+    duration?: SortOrder
     userId?: SortOrder
-    loanProductId?: SortOrder
   }
 
   export type LoanApplicationMaxOrderByAggregateInput = {
@@ -4701,8 +3447,10 @@ export namespace Prisma {
     updatedAt?: SortOrder
     status?: SortOrder
     amount?: SortOrder
+    interest?: SortOrder
+    duration?: SortOrder
+    bank_name?: SortOrder
     userId?: SortOrder
-    loanProductId?: SortOrder
   }
 
   export type LoanApplicationMinOrderByAggregateInput = {
@@ -4711,15 +3459,18 @@ export namespace Prisma {
     updatedAt?: SortOrder
     status?: SortOrder
     amount?: SortOrder
+    interest?: SortOrder
+    duration?: SortOrder
+    bank_name?: SortOrder
     userId?: SortOrder
-    loanProductId?: SortOrder
   }
 
   export type LoanApplicationSumOrderByAggregateInput = {
     id?: SortOrder
     amount?: SortOrder
+    interest?: SortOrder
+    duration?: SortOrder
     userId?: SortOrder
-    loanProductId?: SortOrder
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -4752,39 +3503,6 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type LoanProductCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    interestRate?: SortOrder
-    termLength?: SortOrder
-  }
-
-  export type LoanProductAvgOrderByAggregateInput = {
-    id?: SortOrder
-    interestRate?: SortOrder
-    termLength?: SortOrder
-  }
-
-  export type LoanProductMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    interestRate?: SortOrder
-    termLength?: SortOrder
-  }
-
-  export type LoanProductMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    interestRate?: SortOrder
-    termLength?: SortOrder
-  }
-
-  export type LoanProductSumOrderByAggregateInput = {
-    id?: SortOrder
-    interestRate?: SortOrder
-    termLength?: SortOrder
-  }
-
   export type LoanApplicationCreateNestedManyWithoutUserInput = {
     create?: XOR<LoanApplicationCreateWithoutUserInput, LoanApplicationUncheckedCreateWithoutUserInput> | LoanApplicationCreateWithoutUserInput[] | LoanApplicationUncheckedCreateWithoutUserInput[]
     connectOrCreate?: LoanApplicationCreateOrConnectWithoutUserInput | LoanApplicationCreateOrConnectWithoutUserInput[]
@@ -4801,10 +3519,6 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type LoanApplicationUpdateManyWithoutUserNestedInput = {
@@ -4849,12 +3563,6 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type LoanProductCreateNestedOneWithoutLoanApplicationsInput = {
-    create?: XOR<LoanProductCreateWithoutLoanApplicationsInput, LoanProductUncheckedCreateWithoutLoanApplicationsInput>
-    connectOrCreate?: LoanProductCreateOrConnectWithoutLoanApplicationsInput
-    connect?: LoanProductWhereUniqueInput
-  }
-
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -4873,56 +3581,6 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutLoanApplicationsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutLoanApplicationsInput, UserUpdateWithoutLoanApplicationsInput>, UserUncheckedUpdateWithoutLoanApplicationsInput>
-  }
-
-  export type LoanProductUpdateOneRequiredWithoutLoanApplicationsNestedInput = {
-    create?: XOR<LoanProductCreateWithoutLoanApplicationsInput, LoanProductUncheckedCreateWithoutLoanApplicationsInput>
-    connectOrCreate?: LoanProductCreateOrConnectWithoutLoanApplicationsInput
-    upsert?: LoanProductUpsertWithoutLoanApplicationsInput
-    connect?: LoanProductWhereUniqueInput
-    update?: XOR<XOR<LoanProductUpdateToOneWithWhereWithoutLoanApplicationsInput, LoanProductUpdateWithoutLoanApplicationsInput>, LoanProductUncheckedUpdateWithoutLoanApplicationsInput>
-  }
-
-  export type LoanApplicationCreateNestedManyWithoutLoanProductInput = {
-    create?: XOR<LoanApplicationCreateWithoutLoanProductInput, LoanApplicationUncheckedCreateWithoutLoanProductInput> | LoanApplicationCreateWithoutLoanProductInput[] | LoanApplicationUncheckedCreateWithoutLoanProductInput[]
-    connectOrCreate?: LoanApplicationCreateOrConnectWithoutLoanProductInput | LoanApplicationCreateOrConnectWithoutLoanProductInput[]
-    createMany?: LoanApplicationCreateManyLoanProductInputEnvelope
-    connect?: LoanApplicationWhereUniqueInput | LoanApplicationWhereUniqueInput[]
-  }
-
-  export type LoanApplicationUncheckedCreateNestedManyWithoutLoanProductInput = {
-    create?: XOR<LoanApplicationCreateWithoutLoanProductInput, LoanApplicationUncheckedCreateWithoutLoanProductInput> | LoanApplicationCreateWithoutLoanProductInput[] | LoanApplicationUncheckedCreateWithoutLoanProductInput[]
-    connectOrCreate?: LoanApplicationCreateOrConnectWithoutLoanProductInput | LoanApplicationCreateOrConnectWithoutLoanProductInput[]
-    createMany?: LoanApplicationCreateManyLoanProductInputEnvelope
-    connect?: LoanApplicationWhereUniqueInput | LoanApplicationWhereUniqueInput[]
-  }
-
-  export type LoanApplicationUpdateManyWithoutLoanProductNestedInput = {
-    create?: XOR<LoanApplicationCreateWithoutLoanProductInput, LoanApplicationUncheckedCreateWithoutLoanProductInput> | LoanApplicationCreateWithoutLoanProductInput[] | LoanApplicationUncheckedCreateWithoutLoanProductInput[]
-    connectOrCreate?: LoanApplicationCreateOrConnectWithoutLoanProductInput | LoanApplicationCreateOrConnectWithoutLoanProductInput[]
-    upsert?: LoanApplicationUpsertWithWhereUniqueWithoutLoanProductInput | LoanApplicationUpsertWithWhereUniqueWithoutLoanProductInput[]
-    createMany?: LoanApplicationCreateManyLoanProductInputEnvelope
-    set?: LoanApplicationWhereUniqueInput | LoanApplicationWhereUniqueInput[]
-    disconnect?: LoanApplicationWhereUniqueInput | LoanApplicationWhereUniqueInput[]
-    delete?: LoanApplicationWhereUniqueInput | LoanApplicationWhereUniqueInput[]
-    connect?: LoanApplicationWhereUniqueInput | LoanApplicationWhereUniqueInput[]
-    update?: LoanApplicationUpdateWithWhereUniqueWithoutLoanProductInput | LoanApplicationUpdateWithWhereUniqueWithoutLoanProductInput[]
-    updateMany?: LoanApplicationUpdateManyWithWhereWithoutLoanProductInput | LoanApplicationUpdateManyWithWhereWithoutLoanProductInput[]
-    deleteMany?: LoanApplicationScalarWhereInput | LoanApplicationScalarWhereInput[]
-  }
-
-  export type LoanApplicationUncheckedUpdateManyWithoutLoanProductNestedInput = {
-    create?: XOR<LoanApplicationCreateWithoutLoanProductInput, LoanApplicationUncheckedCreateWithoutLoanProductInput> | LoanApplicationCreateWithoutLoanProductInput[] | LoanApplicationUncheckedCreateWithoutLoanProductInput[]
-    connectOrCreate?: LoanApplicationCreateOrConnectWithoutLoanProductInput | LoanApplicationCreateOrConnectWithoutLoanProductInput[]
-    upsert?: LoanApplicationUpsertWithWhereUniqueWithoutLoanProductInput | LoanApplicationUpsertWithWhereUniqueWithoutLoanProductInput[]
-    createMany?: LoanApplicationCreateManyLoanProductInputEnvelope
-    set?: LoanApplicationWhereUniqueInput | LoanApplicationWhereUniqueInput[]
-    disconnect?: LoanApplicationWhereUniqueInput | LoanApplicationWhereUniqueInput[]
-    delete?: LoanApplicationWhereUniqueInput | LoanApplicationWhereUniqueInput[]
-    connect?: LoanApplicationWhereUniqueInput | LoanApplicationWhereUniqueInput[]
-    update?: LoanApplicationUpdateWithWhereUniqueWithoutLoanProductInput | LoanApplicationUpdateWithWhereUniqueWithoutLoanProductInput[]
-    updateMany?: LoanApplicationUpdateManyWithWhereWithoutLoanProductInput | LoanApplicationUpdateManyWithWhereWithoutLoanProductInput[]
-    deleteMany?: LoanApplicationScalarWhereInput | LoanApplicationScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -4948,20 +3606,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -5006,34 +3650,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -5082,7 +3698,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     status: string
     amount: number
-    loanProduct: LoanProductCreateNestedOneWithoutLoanApplicationsInput
+    interest: number
+    duration: number
+    bank_name: string
   }
 
   export type LoanApplicationUncheckedCreateWithoutUserInput = {
@@ -5091,7 +3709,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     status: string
     amount: number
-    loanProductId: number
+    interest: number
+    duration: number
+    bank_name: string
   }
 
   export type LoanApplicationCreateOrConnectWithoutUserInput = {
@@ -5129,44 +3749,24 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"LoanApplication"> | Date | string
     status?: StringFilter<"LoanApplication"> | string
     amount?: FloatFilter<"LoanApplication"> | number
+    interest?: FloatFilter<"LoanApplication"> | number
+    duration?: IntFilter<"LoanApplication"> | number
+    bank_name?: StringFilter<"LoanApplication"> | string
     userId?: IntFilter<"LoanApplication"> | number
-    loanProductId?: IntFilter<"LoanApplication"> | number
   }
 
   export type UserCreateWithoutLoanApplicationsInput = {
-    email: string
-    password: string
-    name?: string | null
+    pan_number: string
   }
 
   export type UserUncheckedCreateWithoutLoanApplicationsInput = {
     id?: number
-    email: string
-    password: string
-    name?: string | null
+    pan_number: string
   }
 
   export type UserCreateOrConnectWithoutLoanApplicationsInput = {
     where: UserWhereUniqueInput
     create: XOR<UserCreateWithoutLoanApplicationsInput, UserUncheckedCreateWithoutLoanApplicationsInput>
-  }
-
-  export type LoanProductCreateWithoutLoanApplicationsInput = {
-    name: string
-    interestRate: number
-    termLength: number
-  }
-
-  export type LoanProductUncheckedCreateWithoutLoanApplicationsInput = {
-    id?: number
-    name: string
-    interestRate: number
-    termLength: number
-  }
-
-  export type LoanProductCreateOrConnectWithoutLoanApplicationsInput = {
-    where: LoanProductWhereUniqueInput
-    create: XOR<LoanProductCreateWithoutLoanApplicationsInput, LoanProductUncheckedCreateWithoutLoanApplicationsInput>
   }
 
   export type UserUpsertWithoutLoanApplicationsInput = {
@@ -5181,83 +3781,12 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutLoanApplicationsInput = {
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
+    pan_number?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateWithoutLoanApplicationsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type LoanProductUpsertWithoutLoanApplicationsInput = {
-    update: XOR<LoanProductUpdateWithoutLoanApplicationsInput, LoanProductUncheckedUpdateWithoutLoanApplicationsInput>
-    create: XOR<LoanProductCreateWithoutLoanApplicationsInput, LoanProductUncheckedCreateWithoutLoanApplicationsInput>
-    where?: LoanProductWhereInput
-  }
-
-  export type LoanProductUpdateToOneWithWhereWithoutLoanApplicationsInput = {
-    where?: LoanProductWhereInput
-    data: XOR<LoanProductUpdateWithoutLoanApplicationsInput, LoanProductUncheckedUpdateWithoutLoanApplicationsInput>
-  }
-
-  export type LoanProductUpdateWithoutLoanApplicationsInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    interestRate?: FloatFieldUpdateOperationsInput | number
-    termLength?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type LoanProductUncheckedUpdateWithoutLoanApplicationsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    interestRate?: FloatFieldUpdateOperationsInput | number
-    termLength?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type LoanApplicationCreateWithoutLoanProductInput = {
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    status: string
-    amount: number
-    user: UserCreateNestedOneWithoutLoanApplicationsInput
-  }
-
-  export type LoanApplicationUncheckedCreateWithoutLoanProductInput = {
-    id?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    status: string
-    amount: number
-    userId: number
-  }
-
-  export type LoanApplicationCreateOrConnectWithoutLoanProductInput = {
-    where: LoanApplicationWhereUniqueInput
-    create: XOR<LoanApplicationCreateWithoutLoanProductInput, LoanApplicationUncheckedCreateWithoutLoanProductInput>
-  }
-
-  export type LoanApplicationCreateManyLoanProductInputEnvelope = {
-    data: LoanApplicationCreateManyLoanProductInput | LoanApplicationCreateManyLoanProductInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type LoanApplicationUpsertWithWhereUniqueWithoutLoanProductInput = {
-    where: LoanApplicationWhereUniqueInput
-    update: XOR<LoanApplicationUpdateWithoutLoanProductInput, LoanApplicationUncheckedUpdateWithoutLoanProductInput>
-    create: XOR<LoanApplicationCreateWithoutLoanProductInput, LoanApplicationUncheckedCreateWithoutLoanProductInput>
-  }
-
-  export type LoanApplicationUpdateWithWhereUniqueWithoutLoanProductInput = {
-    where: LoanApplicationWhereUniqueInput
-    data: XOR<LoanApplicationUpdateWithoutLoanProductInput, LoanApplicationUncheckedUpdateWithoutLoanProductInput>
-  }
-
-  export type LoanApplicationUpdateManyWithWhereWithoutLoanProductInput = {
-    where: LoanApplicationScalarWhereInput
-    data: XOR<LoanApplicationUpdateManyMutationInput, LoanApplicationUncheckedUpdateManyWithoutLoanProductInput>
+    pan_number?: StringFieldUpdateOperationsInput | string
   }
 
   export type LoanApplicationCreateManyUserInput = {
@@ -5266,7 +3795,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     status: string
     amount: number
-    loanProductId: number
+    interest: number
+    duration: number
+    bank_name: string
   }
 
   export type LoanApplicationUpdateWithoutUserInput = {
@@ -5274,7 +3805,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
-    loanProduct?: LoanProductUpdateOneRequiredWithoutLoanApplicationsNestedInput
+    interest?: FloatFieldUpdateOperationsInput | number
+    duration?: IntFieldUpdateOperationsInput | number
+    bank_name?: StringFieldUpdateOperationsInput | string
   }
 
   export type LoanApplicationUncheckedUpdateWithoutUserInput = {
@@ -5283,7 +3816,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
-    loanProductId?: IntFieldUpdateOperationsInput | number
+    interest?: FloatFieldUpdateOperationsInput | number
+    duration?: IntFieldUpdateOperationsInput | number
+    bank_name?: StringFieldUpdateOperationsInput | string
   }
 
   export type LoanApplicationUncheckedUpdateManyWithoutUserInput = {
@@ -5292,42 +3827,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: StringFieldUpdateOperationsInput | string
     amount?: FloatFieldUpdateOperationsInput | number
-    loanProductId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type LoanApplicationCreateManyLoanProductInput = {
-    id?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    status: string
-    amount: number
-    userId: number
-  }
-
-  export type LoanApplicationUpdateWithoutLoanProductInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: StringFieldUpdateOperationsInput | string
-    amount?: FloatFieldUpdateOperationsInput | number
-    user?: UserUpdateOneRequiredWithoutLoanApplicationsNestedInput
-  }
-
-  export type LoanApplicationUncheckedUpdateWithoutLoanProductInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: StringFieldUpdateOperationsInput | string
-    amount?: FloatFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type LoanApplicationUncheckedUpdateManyWithoutLoanProductInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: StringFieldUpdateOperationsInput | string
-    amount?: FloatFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    interest?: FloatFieldUpdateOperationsInput | number
+    duration?: IntFieldUpdateOperationsInput | number
+    bank_name?: StringFieldUpdateOperationsInput | string
   }
 
 
@@ -5340,10 +3842,6 @@ export namespace Prisma {
      */
     export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use LoanProductCountOutputTypeDefaultArgs instead
-     */
-    export type LoanProductCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LoanProductCountOutputTypeDefaultArgs<ExtArgs>
-    /**
      * @deprecated Use UserDefaultArgs instead
      */
     export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
@@ -5351,10 +3849,6 @@ export namespace Prisma {
      * @deprecated Use LoanApplicationDefaultArgs instead
      */
     export type LoanApplicationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LoanApplicationDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use LoanProductDefaultArgs instead
-     */
-    export type LoanProductArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = LoanProductDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

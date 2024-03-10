@@ -1,15 +1,15 @@
-http.post./apply/loan:
+http & graphql.post./apply/loan:
   summary: Apply for loan 
   description:  Apply for loan
   fn: los.apply_for_loan
-  
   body:
     content:
-      application/json:
+      multipart/form-data:
          schema:
           $ref: '#/definitions/los/apply_loan'
   responses:
-    content:
-      application/json:
-        schema:
-          type: object
+    200:
+      content:
+        application/json:
+          schema:
+            type: object

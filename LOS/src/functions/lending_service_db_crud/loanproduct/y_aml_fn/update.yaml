@@ -1,8 +1,0 @@
-summary: Update LoanProduct
-tasks:
-  - id: lending_service_db_loanproduct_update
-    fn: datasource.lending_service_db.LoanProduct.update
-    args:
-      where:
-        id: <% parseInt(inputs.params.id) %>
-      data: <% inputs.body %>

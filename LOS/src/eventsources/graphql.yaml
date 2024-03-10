@@ -2,10 +2,10 @@ type: graphql
 port: 4008
 
 authn:
-  jwt:
-    secretOrKey: mysecret
-    audience: mycompany
-    issuer: mycompany
+  jwt: # best practice is to store secrets in environment variables and not hardcode here.
+    secretOrKey: <%config.jwt.secretOrKey%>
+    audience: <%config.jwt.audience%>
+    issuer: <%config.jwt.issuer%>
 
 authz:
   - id: check_user_role

@@ -1,28 +1,148 @@
-summary: fetching loans offered by different banks via rule-engine datasource 
-id: rule-engine_datasource_loan_fetch
+# Complete the full loan application journey 
+id: apply_loan_wflw
 tasks:
-  - id: fetch_loans
-    description: Fetching loan offers
+  - id: fetch_loan_offers
+    # Fetching loan offers from rule engine for the given bank and pan card
     fn: datasource.rule_engine.post./anything
     args:
-      data: <% inputs.body %>
-  - id: tranform_loan_data
-    description: transforming response from rule-engine
-    fn: com.gs.transform
-    args:
-      data: 
-        applied_for: <% outputs.fetch_loans.data.data %>
-        message: successfully applied
+      data:
+        bank_name: <%inputs.body.bank_name%>
+        pan_number: <%inputs.body.pan_number%>
+        amount: 100.00
+        interest_rate: 10.5
+        duration: 12 #months
+    on_error:
+      continue: false
+    retry: # By default the datasource has constant retry set in its yaml. Here we override the retry to exponential
+      when: # an and condition between status and message.
+        status: [500, 503] # an array or single value of codes (optional). Default 500
+        message: Retry later # Retry when response has this message
+      max_attempts: 5
+      type: exponential
+      min_interval: PT5s
+      max_internal: PT15s
+    logs:
+      before:
+        level: info
+        message: Fetching loan offer from bank
+        attributes:
+          bank_name: <%inputs.body.bank_name%>
+          pan_number: <%inputs.body.pan_number%>
+      after:
+        level: info
+        message: Re-fetched loan offer from bank
+        attributes:
+          bank_name: <%inputs.body.bank_name%>
+          pan_number: <%inputs.body.pan_number%>
+
   - id: kyc_details_verify
-    description: detailed description of workflow
+    # Verify the pan number of the user
     fn: los.loan_application_journey.kyc
     args: <% inputs %>
-  - id: create_account_after_verify_kyc
-    description: detailed description of workflow
+    logs:
+      before:
+        level: info
+        message: Initiating KYC
+        attributes:
+          bank_name: <%inputs.body.bank_name%>
+          pan_number: <%inputs.body.pan_number%>
+      after:
+        level: info
+        message: KYC done for customer
+        attributes:
+          bank_name: <%inputs.body.bank_name%>
+          pan_number: <%inputs.body.pan_number%>
+
+  - id: upload_documents
+    # Upload user documents to S3 storage
     fn: los.loan_application_journey.upload_document
     args: <% inputs %>
-  - id: create_account_after_verify_kyc
-    description: detailed description of workflow
-    fn: los.loan_application_journey.create_account
-    args: <% inputs %>
+    on_error:
+      continue: false
+    logs:
+      before:
+        level: info
+        message: Initiating document upload to S3
+        attributes:
+          bank_name: <%inputs.body.bank_name%>
+          pan_number: <%inputs.body.pan_number%>
+      after:
+        level: info
+        message: Uploaded documents to S3
+        attributes:
+          bank_name: <%inputs.body.bank_name%>
+          pan_number: <%inputs.body.pan_number%>
+
+  - id: create_loan_account_in_bank
+    # Create loan account within the bank's system
+    fn: datasource.my_bank.post./anything
+    args:
+      data: 
+        applied_for: <% outputs.fetch_loan_offers.data.json %>
+        message: successfully applied
+        id: <%randomInt(1, 10000)%>
+    logs:
+      before:
+        level: info
+        message: Creating loan account in bank
+        attributes:
+          bank_name: <%inputs.body.bank_name%>
+          pan_number: <%inputs.body.pan_number%>
+      after:
+        level: info
+        message: Created account in bank 
+        attributes:
+          bank_name: <%inputs.body.bank_name%>
+          pan_number: <%inputs.body.pan_number%>
+
+
+  - id: create_account_lms
+    # Create user account in the LMS. Invoke another sub-workflow
+    fn: los.loan_application_journey.create_account_lms_ts
+    args:
+      loan_offer: <% outputs.fetch_loan_offers.data.json %>
+      pan_number: <% inputs.body.pan_number %>
+      id: <%randomInt(1, 10000)%>
+    logs:
+      before:
+        level: info
+        message: Creating loan application in LMS
+        attributes:
+          bank_name: <%inputs.body.bank_name%>
+          pan_number: <%inputs.body.pan_number%>
+      after:
+        level: info
+        message: Created account in LMS. Loan application journey completed.
+        attributes:
+          bank_name: <%inputs.body.bank_name%>
+          pan_number: <%inputs.body.pan_number%>
+
+  - id: publish_loan_onboarding_data
+    # Send new user and loan details to Kafka
+    fn: datasource.kafka.producer
+    args:
+      topic: new_loan
+      message: <% outputs.fetch_loan_offers.data.json %>
+    logs:
+      before:
+        level: info
+        message: Sending event to kafka
+        attributes:
+          message_body: <%outputs.fetch_loan_offers.data.json%>
+      after:
+        level: info
+        message: Sent event to kafka
+        attributes:
+          message_body: <%outputs.fetch_loan_offers.data.json%>
   
+  - id: return_response
+    # combine and return response
+    fn: com.gs.transform
+    args:
+      data:
+        message: Loan account created. Event published on Kafka.
+        bank:
+          name: <%inputs.body.bank_name%>
+          vpa_id: <%outputs.create_loan_account_in_bank.data.json.id%>
+        lms:
+          lms_account_id: <%outputs.create_account_lms.data.json.id%>

@@ -1,0 +1,8 @@
+summary: Create user loan account in the LMS 
+id: create_loan_account
+tasks:
+  - id: create_account_lms
+    description: Fetching loan offers
+    fn: datasource.lms.post./anything
+    args: 
+      data: <%inputs%>

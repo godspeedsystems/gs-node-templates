@@ -1,4 +1,14 @@
 node_env: NODE_ENV #where NODE_ENV is an environment variable set by you. This will be accessible as config.node_env in inline script and ctx.config.node_env in JS/TS
+
+# Prisma encryption secret
+prisma_secret: PRISMA_SECRET
+
+# jwt auth in graphql and http services
+jwt:
+  secretOrKey: JWT_SECRET
+  audience: JWT_AUDIENCE
+  issuer: JWT_ISSUER
+
 aws:
   region: REGION
   secretAccessKey: SECRET_ACCESS_KEY
@@ -23,8 +33,7 @@ kafka:
     __format: json
   client_id: KAFKA_CLIENT_ID
 
-topicName:
-  distributor: KAFKA_DISTRIBUTOR_TOPIC_NAME
+
 
 url:
   distributor_url: SALESFORCE_DISTRIBUTOR_URL

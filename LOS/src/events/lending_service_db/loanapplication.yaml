@@ -84,6 +84,8 @@ http & graphql.post./lending_service_db/loanapplication/search:
       application/json:
         schema:
           type: object
+          example: {"include": {"user": {"select": {"pan_number": true}}}, "where": {"userId": 19}}
+
   responses:
     content:
       '200':

@@ -1,0 +1,32 @@
+# consuming kafka event from topic new_loan
+kafka.new_loan.grpId1:
+  id: kafka_new_loan_event
+  fn: db_sync.kafka_to_db
+  summary: listen on new loan and create a database entry
+  description: consume data from kafka and transfer data into DB
+  data:
+    description: DB data payload
+    required: true
+    content:
+      application/json:
+        schema:
+          type: string
+          required:
+            [
+              pan_number,
+              amount,
+              interest,
+              duration,
+              bank_name
+            ]
+          properties:
+            pan_number:
+              type: string
+            bank_name:
+              type: string
+            interest:
+              type: float
+            duration:
+              type: integer
+            amount:
+              type: float

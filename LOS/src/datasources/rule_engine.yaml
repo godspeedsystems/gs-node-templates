@@ -1,4 +1,35 @@
 type: axios
 base_url: https://httpbin.org
-headers: #The commonheaders that you want to send in every API call
+
+# print all api calls in curl format
+curlifiedLogs: true 
+
+# Authentication of API calls with token refresh logic
+authn: 
+  fn: my_bank.authn
+  refreshOn:
+    statusCode: [401]
+
+# Common headers to be set in all API calls
+headers:
   Content-Type: application/json
+  Cookie: <%mappings.my_bank.auth_workflow_cookie%>
+
+# Retry logic for failed API calls for ex on Internal server errors or request timeouts
+retry:
+    when: #the condition
+      status: [500, 503] # an array or single value of codes (optional). Default 500
+      message: my custom expected message for retry #And (optionally) when response has this message
+    max_attempts: 5
+    type: constant # or random, exponential
+    interval: PT15s
+    # type: exponential
+    # min_interval: PT5s
+    # max_internal: PT15s
+    # type: random
+    # min_interval: PT5s
+    # max_internal: PT15s
+
+# Any other configurations you need to reuse in datasource initialization or method executions
+auth_url: https://httpbin.org
+some_config: 'my_config_setting'

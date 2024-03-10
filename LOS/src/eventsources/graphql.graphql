@@ -1,83 +1,86 @@
+input apply_loanInput {
+  loan_offer: apply_loanInput_loan_offerInput
+  kyc: apply_loanInput_kycInput
+}
+
+input apply_loanInput_kycInput {
+  pan_number: String
+  mobile_number: Float
+}
+
+input apply_loanInput_loan_offerInput {
+  bank_name: String
+  loan_amount: String
+  interest_rate: String
+  duration: String
+}
+
 scalar JSON
+
+input loan_offersInput_itemsInput {
+  bank_name: String
+  loan_amount: String
+  interest_rate: String
+  duration: String
+}
+
+input LoanApplicationInput {
+  createdAt: String
+  updatedAt: String
+  status: String
+  amount: Float
+  userId: Int
+  loanProductId: Int
+}
+
+input LoanProductInput {
+  name: String
+  interestRate: Float
+  termLength: Int
+}
 
 type Mutation {
   """Update LoanApplication from database"""
-  Update_a_LoanApplication(id: String!, body: param_Update_a_LoanApplication_bodyInput): JSON!
+  Update_a_LoanApplication(id: String!, body: LoanApplicationInput): JSON!
 
   """Delete LoanApplication from database"""
   Delete_a_LoanApplication(id: String!): JSON!
 
   """Create LoanApplication from database"""
-  Create_a_new_LoanApplication(body: param_Create_a_new_LoanApplication_bodyInput): JSON!
+  Create_a_new_LoanApplication(body: LoanApplicationInput): JSON!
 
   """Fetch multiple LoanApplication from database"""
   Fetch_multiple_LoanApplication(body: JSON): JSON!
 
   """Update LoanProduct from database"""
-  Update_a_LoanProduct(id: String!, body: param_Update_a_LoanProduct_bodyInput): JSON!
+  Update_a_LoanProduct(id: String!, body: LoanProductInput): JSON!
 
   """Delete LoanProduct from database"""
   Delete_a_LoanProduct(id: String!): JSON!
 
   """Create LoanProduct from database"""
-  Create_a_new_LoanProduct(body: param_Create_a_new_LoanProduct_bodyInput): JSON!
+  Create_a_new_LoanProduct(body: LoanProductInput): JSON!
 
   """Fetch multiple LoanProduct from database"""
   Fetch_multiple_LoanProduct(body: JSON): JSON!
 
   """Update User from database"""
-  Update_a_User(id: String!, body: param_Update_a_User_bodyInput): JSON!
+  Update_a_User(id: String!, body: UserInput): JSON!
 
   """Delete User from database"""
   Delete_a_User(id: String!): JSON!
 
   """Create User from database"""
-  Create_a_new_User(body: param_Create_a_new_User_bodyInput): JSON!
+  Create_a_new_User(body: UserInput): JSON!
 
   """Fetch multiple User from database"""
   Fetch_multiple_User(body: JSON): JSON!
-}
 
-input param_Create_a_new_LoanApplication_bodyInput {
-  createdAt: String
-  updatedAt: String
-  status: String
-  amount: Float
-  userId: Int
-  loanProductId: Int
-}
+  """Apply for loan"""
+  Apply_for_loan(body: apply_loanInput): JSON!
 
-input param_Create_a_new_LoanProduct_bodyInput {
-  name: String
-  interestRate: Float
-  termLength: Int
-}
-
-input param_Create_a_new_User_bodyInput {
-  email: String
-  password: String
-  name: String
-}
-
-input param_Update_a_LoanApplication_bodyInput {
-  createdAt: String
-  updatedAt: String
-  status: String
-  amount: Float
-  userId: Int
-  loanProductId: Int
-}
-
-input param_Update_a_LoanProduct_bodyInput {
-  name: String
-  interestRate: Float
-  termLength: Int
-}
-
-input param_Update_a_User_bodyInput {
-  email: String
-  password: String
-  name: String
+  """Fetch loan offer from banks"""
+  Fetch_loan_offer_from_banks(body: [loan_offersInput_itemsInput!]): JSON!
 }
 
 type Query {
@@ -89,5 +92,11 @@ type Query {
 
   """Fetch User from database"""
   Fetch_User(id: String!): JSON!
+}
+
+input UserInput {
+  email: String
+  password: String
+  name: String
 }
 

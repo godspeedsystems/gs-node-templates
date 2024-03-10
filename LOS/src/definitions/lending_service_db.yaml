@@ -1,15 +1,21 @@
 User:
   type: object
+  required:
+    - pan_number
+  additionalProperties: false
   properties:
-    email:
+    pan_number:
       type: string
-    password:
-      type: string
-    name:
-      type: string
-      nullable: true
 LoanApplication:
   type: object
+  required:
+    - updatedAt
+    - status
+    - amount
+    - interest
+    - duration
+    - bank_name
+    - userId
   properties:
     createdAt:
       type: string
@@ -21,16 +27,11 @@ LoanApplication:
       type: string
     amount:
       type: number
-    userId:
-      type: integer
-    loanProductId:
-      type: integer
-LoanProduct:
-  type: object
-  properties:
-    name:
-      type: string
-    interestRate:
+    interest:
       type: number
-    termLength:
+    duration:
+      type: integer
+    bank_name:
+      type: string
+    userId:
       type: integer

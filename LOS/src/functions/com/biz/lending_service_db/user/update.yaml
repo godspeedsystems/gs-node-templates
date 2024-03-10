@@ -1,0 +1,11 @@
+summary: Update User
+tasks:
+  - id: lending_service_db_user_update
+    fn: datasource.lending_service_db.User.update
+    args:
+      where:
+        id: <% parseInt(inputs.params.id) %>
+      data: <% inputs.body %>
+    caching:
+      invalidate: <%'User_' + outputs.lending_service_db_loanapplication_create.data.id%>
+    

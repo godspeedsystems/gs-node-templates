@@ -1,0 +1,10 @@
+summary: Update LoanApplication
+tasks:
+  - id: lending_service_db_loanapplication_update
+    fn: datasource.lending_service_db.LoanApplication.update
+    args:
+      where:
+        id: <% parseInt(inputs.params.id) %>
+      data: <% inputs.body %>
+    caching:
+      invalidate: <%'LoanApplication_' + outputs.lending_service_db_loanapplication_create.data.id%> 

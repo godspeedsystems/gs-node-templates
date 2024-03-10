@@ -1,0 +1,56 @@
+summary: push scf data into salesforce
+id: kafka_to_db
+tasks:
+  - id: db_user_create
+    summary: Create user in the database
+    fn: datasource.lending_service_db.User.create
+    args:
+      data:
+        pan_number: <% inputs.body.pan_number%>
+    on_error:
+      continue: false
+    logs:
+      before:
+        level: info
+        message: Creating user in the database
+        attributes:
+          inputs_body: <%inputs.body%>
+      after:
+        level: info
+        message: Created user in the database
+        attributes:
+          pan_number: <%inputs.body.pan_number%>
+          db_response: <%outputs.db_user_create.data%>
+  - id: lending_service_db_loanapplication_create
+    fn: datasource.lending_service_db.LoanApplication.create
+    args:
+      data:
+        userId: <%outputs.db_user_create.data.id%> # use id from previous task where user is created
+        status: approved # e.g. "pending", "approved", "rejected"
+        amount: <%inputs.body.amount%>
+        interest: <%inputs.body.interest_rate%>
+        duration: <%inputs.body.duration%>
+        bank_name: <%inputs.body.bank_name%>
+    logs:
+      before:
+        level: info
+        message: Creating loan app in the database
+        attributes:
+          userId: <%outputs.db_user_create.data.id%> # use id from previous task where user is created
+          status: approved # e.g. "pending", "approved", "rejected"
+          amount: <%inputs.body.amount%>
+          interest: <%inputs.body.interest%>
+          duration: <%inputs.body.duration%>
+          bank_name: <%inputs.body.bank_name%>
+      after:
+        level: info
+        message: Created loan app in the database
+        attributes:
+          userId: <%outputs.db_user_create.data.id%> # use id from previous task where user is created
+          status: approved # e.g. "pending", "approved", "rejected"
+          amount: <%inputs.body.amount%>
+          interest: <%inputs.body.interest%>
+          duration: <%inputs.body.duration%>
+          bank_name: <%inputs.body.bank_name%>
+          loan_application_id: <%outputs.lending_service_db_loanapplication_create.data.id%>
+        

@@ -1,37 +1,23 @@
 loan_offers:
-  type: array
-  items:
-    type: object
-    properties:
-      bank_name:
-        type: string
-      loan_amount:
-        type: string
-      interest_rate:
-        type: string
-      duration:
-        type: string
+  type: object
+  properties:
+    pan_number:
+      type: string
+      example: AKJPG88DD
 
 apply_loan:
   type: object
+  required: ['pan_number', 'bank_name']
   properties:
-    loan_offer:
-      type: object
-      properties:
-        bank_name:
-          type: string
-        loan_amount:
-          type: string
-        interest_rate:
-          type: string
-        duration:
-          type: string
-    kyc:
-      type: object
-      properties:
-        pan_number:
-          type: string
-        mobile_number:
-          type: number
+    pan_number:
+      type: string
+      example: AKJPG88DD
+    bank_name:
+      type: string
+      example: my_bank
+    panCardFile:
+      type: string
+      format: binary    
+
     
     

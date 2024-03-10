@@ -1,0 +1,13 @@
+summary: Fetch many LoanApplication
+tasks:
+  - id: lending_service_db_loanapplication_search
+    fn: datasource.lending_service_db.LoanApplication.findMany
+    args: <%inputs.body%>
+    caching:
+      # datasource: in_mem_cache #the name of the datasource instance to use instead of default cache
+      key: <%'LoanApplication_' + JSON.stringify(inputs.body)%> # <Optional. Key name which is used to read from and write cache result of this task in applicable cache. Also see noRead and noWrite flags>
+      #invalidate: <%inputs.params.id%> # <Key name which we want to delete/remove from cache e.g. this feature can be used in CRUD types task. While delete operation, invalidate the cache of read or update task>
+      # cache_on_failure: false # <true|false, whether you want to cache the failure result or not. By default, it is false>
+      #options: #Optional
+      #  EX: 200 # <timer in seconds, until the cached result is valid> #Can pass any of RedisOptions, if supported by the specific caching Datasource 
+      # noRead: true # <true|false. Default false. a flag to specify to not to look into cache and executing task's function nonetheless. But the response from the task is set in the key specified (unless noWrite is set to true). Set noRead to true if you don't want to use cache for this task, but want to store this tasks response as a key for accessing this task's result somewhere else>

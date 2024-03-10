@@ -1,9 +1,11 @@
-# log_level: debug
+
 lang: js #js You can set 'coffee' or 'js' as your inline scripting language
-log:
-  redact: ['a.b.c', 'a.b.*', 'req.headers']  #pino redact rules. Default null.
+caching: in_mem_cache
+log: # log setting of the project
+  redact: ['pan_number'] # []'a.b.c', 'a.b.*', 'req.headers']  #pino redact rules. Default null.
   attributes: #which OTEL attributes do you want to log in every log statement. Default null
-    org_id: my_fintech_inc
+    gender: mappings.GENDER.male
+    headers: "headers.authorization"
   level: debug #by default info
   timestamp: stdTimeFunctions.isoTime
   sync: true #or false. By default sync is false
@@ -11,7 +13,7 @@ log:
     pid: false
     hostname: false
 
+# Any other settings for access in the project 
 datasourceDB:
   name: lending_service_db
-
 

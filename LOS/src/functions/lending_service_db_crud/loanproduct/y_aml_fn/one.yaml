@@ -1,7 +1,0 @@
-summary: Fetch LoanProduct
-tasks:
-  - id: lending_service_db_loanproduct_one
-    fn: datasource.lending_service_db.LoanProduct.findUnique
-    args:
-      where:
-        id: <% parseInt(inputs.params.id) %>

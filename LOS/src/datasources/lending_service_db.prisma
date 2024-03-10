@@ -11,9 +11,9 @@ generator client {
 
 model User {
   id               Int               @id @default(autoincrement())
-  email            String            @unique
-  password         String
-  name             String?
+  pan_number            String            @unique ///@encrypted
+  // password         String            ///@encrypted
+  // name             String?
   loanApplications LoanApplication[]
 }
 
@@ -23,16 +23,19 @@ model LoanApplication {
   updatedAt      DateTime        @updatedAt
   status         String          // e.g. "pending", "approved", "rejected"
   amount         Float
+  interest       Float
+  duration       Int
+  bank_name      String
   userId         Int             // Foreign key to associate with User
-  loanProductId  Int             // Foreign key to associate with LoanProduct
+  // loanProductId  Int             // Foreign key to associate with LoanProduct
   user           User            @relation(fields: [userId], references: [id])
-  loanProduct    LoanProduct     @relation(fields: [loanProductId], references: [id])
+  // loanProduct    LoanProduct     @relation(fields: [loanProductId], references: [id])
 }
 
-model LoanProduct {
-  id               Int               @id @default(autoincrement())
-  name             String
-  interestRate     Float             // e.g. 5.5 for 5.5%
-  termLength       Int               // Length of loan term in months
-  loanApplications LoanApplication[]
-}
+// model LoanProduct {
+//   id               Int               @id @default(autoincrement())
+//   name             String
+//   interestRate     Float             // e.g. 5.5 for 5.5%
+//   termLength       Int               // Length of loan term in months
+//   loanApplications LoanApplication[]
+// }

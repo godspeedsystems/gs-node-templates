@@ -15,7 +15,11 @@ http & graphql.get./lending_service_db/user/{id}:
         application/json:
           schema:
             type: object
-
+  log:
+    attributes:
+      user_id: params.id
+      test: user.role
+      gender: <%mappings.GENDER.MALE%>
 # CREATE
 http & graphql.post./lending_service_db/user:
   summary: Create a new User
@@ -84,10 +88,14 @@ http & graphql.post./lending_service_db/user/search:
       application/json:
         schema:
           type: object
+          example: {"include": {"loanApplications": true}, "where": {"pan_number": "AKJPG8855"}}
+
   responses:
     content:
       '200':
         application/json:
           schema:
             type: array
+            items:
+              $ref: '#/definitions/lending_service_db/User'
 
