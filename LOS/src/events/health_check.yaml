@@ -1,0 +1,23 @@
+http.post./health:
+  summary: Health check of the service 
+  description: Check whether the service running
+  fn: health.check
+  authn: false
+  authz: false
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+          required: ['name']
+          properties:
+            name:
+              type: string
+              example: Godspeed
+
+  responses:
+    200:
+      content:
+        application/text:
+          schema:
+            type: string
