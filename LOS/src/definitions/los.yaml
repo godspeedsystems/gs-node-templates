@@ -1,5 +1,6 @@
 loan_offers:
   type: object
+  required: ['pan_number']
   properties:
     pan_number:
       type: string

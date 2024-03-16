@@ -14,6 +14,8 @@ services:
       POSTGRES_PASSWORD: mysecretpassword
     volumes:
       - pgdata:/var/lib/my_lending_db/data
+    ports:
+      - 5432:5432
   kafka:
     image: confluentinc/cp-kafka:7.4.4
     depends_on:

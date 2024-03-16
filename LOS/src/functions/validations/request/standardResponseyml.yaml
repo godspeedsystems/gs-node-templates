@@ -6,7 +6,7 @@ tasks:
       success: false
       code: 400
       data: #can manipulate response data here
-        <%inputs.validation_error%>
+        <%inputs.validationError%>
     # logs:
     #   before:
     #     level: info

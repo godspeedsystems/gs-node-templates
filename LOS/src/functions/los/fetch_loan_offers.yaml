@@ -22,4 +22,4 @@ tasks:
     args:
       data: 
         message: Following loan offers available for the given pan card based on credit score
-        loan_offers: <% outputs.fetch_loans.data.data %>
+        loan_offers: <% outputs.fetch_loans.data.json %>
