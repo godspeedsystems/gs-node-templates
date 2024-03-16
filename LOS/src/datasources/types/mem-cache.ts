@@ -1,5 +1,5 @@
 import { GSCachingDataSource, GSContext, PlainObject, logger} from "@godspeedsystems/core";
-const logAttrs = {'file': 'mem-cache.ts'};
+const logAttrs = {'memcache_file': 'src/datasources/types/mem-cache.ts'};
 export default class MemCacheDs extends GSCachingDataSource {
     set(key: string, val: any, options: { EX?: number | undefined; PX?: number | undefined; EXAT?: number | undefined; NX?: boolean | undefined; XX?: boolean | undefined; KEEPTTL?: boolean | undefined; GET?: boolean | undefined; }) {
         logger.debug(logAttrs, 'set key %s %o', key, this.client)

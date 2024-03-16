@@ -30,4 +30,18 @@ tasks:
       #options: #Optional
       #  EX: 200 # <timer in seconds, until the cached result is valid> #Can pass any of RedisOptions, if supported by the specific caching Datasource 
       # noRead: true # <true|false. Default false. a flag to specify to not to look into cache and executing task's function nonetheless. But the response from the task is set in the key specified (unless noWrite is set to true). Set noRead to true if you don't want to use cache for this task, but want to store this tasks response as a key for accessing this task's result somewhere else>
-    
+    logs:
+      before:
+        message: About to search for User in task
+        level: debug
+        attributes:
+          fn_event_type: search
+          fn_entity_type: User
+      after:
+        message: Search User Task Response
+        level: debug
+        attributes:
+          fn_event_type: search
+          fn_entity_type: User
+        params:
+          response: <%outputs.lending_service_db_user_search.data%>  

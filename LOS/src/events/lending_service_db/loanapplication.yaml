@@ -15,6 +15,13 @@ http & graphql.get./lending_service_db/loanapplication/{id}:
         application/json:
           schema:
             type: object
+  log:
+    attributes:
+      event_entity_id: params.id
+      event_user_role: user.role
+      event_gender: <%mappings.GENDER.FEMALE%>
+      event_type: find_one
+      event_entity_type: LoanApplication
 
 # CREATE
 http & graphql.post./lending_service_db/loanapplication:
@@ -32,7 +39,11 @@ http & graphql.post./lending_service_db/loanapplication:
         application/json:
           schema:
             type: object
-
+  log:
+    attributes:
+      event_user_role: user.role
+      event_type: create
+      event_entity_type: LoanApplication
 # UPDATE
 http & graphql.put./lending_service_db/loanapplication/{id}:
   summary: Update a LoanApplication
@@ -55,6 +66,12 @@ http & graphql.put./lending_service_db/loanapplication/{id}:
         application/json:
           schema:
             type: object
+  log:
+    attributes:
+      event_entity_id: params.id
+      event_user_role: user.role
+      event_type: update
+      event_entity_type: LoanApplication
 
 # DELETE
 http & graphql.delete./lending_service_db/loanapplication/{id}:
@@ -73,6 +90,12 @@ http & graphql.delete./lending_service_db/loanapplication/{id}:
         application/json:
           schema:
             type: object
+  log:
+    attributes:
+      event_entity_id: params.id
+      event_user_role: user.role
+      event_type: delete
+      event_entity_type: LoanApplication
 
 # SEARCH
 http & graphql.post./lending_service_db/loanapplication/search:
@@ -92,4 +115,10 @@ http & graphql.post./lending_service_db/loanapplication/search:
         application/json:
           schema:
             type: array
+  log:
+    attributes:
+      event_user_role: user.role
+      event_gender: <%mappings.GENDER.FEMALE%>
+      event_type: search
+      event_entity_type: LoanApplication
 

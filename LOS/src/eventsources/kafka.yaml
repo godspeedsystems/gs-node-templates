@@ -1,3 +1,6 @@
 type: kafka
 clientId: <% config.kafka.client_id %>
 brokers: <% config.kafka.brokers %>
+log:
+  attributes:
+    eventsource_type: kafka

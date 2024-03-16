@@ -13,3 +13,7 @@ http & graphql.post./apply/loan:
         application/json:
           schema:
             type: object
+
+  log:
+    attributes:
+      event_type: apply_loan

@@ -14,3 +14,7 @@ authz:
 
 on_request_validation_error: validations.request.standardResponse
 on_response_validation_error: validations.request.standardResponse
+
+log:
+  attributes:
+    eventsource_type: graphql

@@ -8,3 +8,23 @@ tasks:
       data: <% inputs.body %>
     caching:
       invalidate: <%'LoanApplication_' + outputs.lending_service_db_loanapplication_create.data.id%> 
+    logs:
+      before:
+        message: About to update LoanApplication in task
+        level: debug
+        attributes:
+          fn_event_type: update
+          fn_entity_type: LoanApplication
+          fn_bank_name: <%inputs.body.bank_name%>
+          fn_user_id: <%inputs.body.userId%>
+      after:
+        message: Created LoanApplication
+        level: debug
+        attributes:
+          fn_entity_id: <% outputs.lending_service_db_loanapplication_update.data.id %>
+          fn_event_type: updated
+          fn_entity_type: LoanApplication
+          fn_bank_name: <%inputs.body.bank_name%>
+          fn_user_id: <%inputs.body.userId%>
+        params:
+          response: <%outputs.lending_service_db_loanapplication_update.data%>

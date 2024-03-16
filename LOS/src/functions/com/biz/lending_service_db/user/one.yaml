@@ -10,12 +10,16 @@ tasks:
         message: About to get user from id
         level: debug
         attributes:
-          user_id: <% parseInt(inputs.params.id) %>
+          fn_event_type: find_one
+          fn_entity_type: User
+          fn_entity_id: <%inputs.params.id%>
       after:
-        message: Retrieved user by
+        message: Find one reponse for User in task
         level: debug
         attributes:
-          user_id: <% parseInt(inputs.params.id) %>
+          fn_event_type: find_one
+          fn_entity_type: User
+          fn_entity_id: <%inputs.params.id%>
         params:
           response: <%outputs.lending_service_db_user_one.data%>
     caching:

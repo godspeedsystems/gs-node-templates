@@ -25,6 +25,10 @@ on_response_validation_error:
     fn: com.gs.return
     args: <%inputs%>
 
+log:
+  attributes:
+    eventsource_type: http
+
 docs: #swagger information
   endpoint: /api-docs #the endpoint in which swagger UI will run
   info:

@@ -14,3 +14,20 @@ tasks:
       #  EX: 200 # <timer in seconds, until the cached result is valid> #Can pass any of RedisOptions, if supported by the specific caching Datasource 
       # noRead: true # <true|false. Default false. a flag to specify to not to look into cache and executing task's function nonetheless. But the response from the task is set in the key specified (unless noWrite is set to true). Set noRead to true if you don't want to use cache for this task, but want to store this tasks response as a key for accessing this task's result somewhere else>
       #noWrite: <true|false. Default false. A flag to specify whether the result of this task is to be stored in the cache or not. If false, needs the key attribute also to set the result of task against that key.
+    logs:
+      before:
+        message: About to delete User in task
+        level: debug
+        attributes:
+          fn_event_type: delete
+          fn_entity_type: User
+          fn_entity_id: inputs.params.id
+      after:
+        message: Deleted User in task
+        level: debug
+        attributes:
+          fn_entity_id: <%inputs.params.id%>
+          fn_event_type: delete
+          fn_entity_type: User
+        params:
+          response: <%outputs.lending_service_db_user_delete.data%>

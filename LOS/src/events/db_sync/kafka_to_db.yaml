@@ -30,3 +30,7 @@ kafka.new_loan.grpId1:
               type: integer
             amount:
               type: float
+  log:
+    attributes:
+      event_type: on_create
+      event_entity_type: Loan

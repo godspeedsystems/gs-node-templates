@@ -12,3 +12,7 @@ http & graphql.post./fetch/loan/offers:
       application/json:
         schema:
           type: object
+  log:
+    attributes:
+      event_type: fetch_loan_offers
+      event_entity_type: LoanOffer

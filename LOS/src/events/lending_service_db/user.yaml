@@ -17,9 +17,13 @@ http & graphql.get./lending_service_db/user/{id}:
             type: object
   log:
     attributes:
-      user_id: params.id
-      test: user.role
-      gender: <%mappings.GENDER.MALE%>
+      event_user_id: params.id
+      event_user_role: user.role
+      event_gender: <%mappings.GENDER.FEMALE%>
+      event_type: find_one
+      event_entity_type: User
+
+
 # CREATE
 http & graphql.post./lending_service_db/user:
   summary: Create a new User
@@ -36,6 +40,12 @@ http & graphql.post./lending_service_db/user:
         application/json:
           schema:
             type: object
+  log:
+    attributes:
+      event_user_role: user.role
+      event_gender: <%mappings.GENDER.FEMALE%>
+      event_type: create
+      event_entity_type: User
 
 # UPDATE
 http & graphql.put./lending_service_db/user/{id}:
@@ -59,6 +69,13 @@ http & graphql.put./lending_service_db/user/{id}:
         application/json:
           schema:
             type: object
+  log:
+    attributes:
+      event_user_id: params.id
+      event_user_role: user.role
+      event_gender: <%mappings.GENDER.FEMALE%>
+      event_type: update
+      event_entity_type: User
 
 # DELETE
 http & graphql.delete./lending_service_db/user/{id}:
@@ -77,6 +94,13 @@ http & graphql.delete./lending_service_db/user/{id}:
         application/json:
           schema:
             type: object
+  log:
+    attributes:
+      event_user_id: params.id
+      event_user_role: user.role
+      event_gender: <%mappings.GENDER.FEMALE%>
+      event_type: delete
+      event_entity_type: User
 
 # SEARCH
 http & graphql.post./lending_service_db/user/search:
@@ -98,4 +122,9 @@ http & graphql.post./lending_service_db/user/search:
             type: array
             items:
               $ref: '#/definitions/lending_service_db/User'
-
+  log:
+    attributes:
+      event_user_role: user.role
+      event_gender: <%mappings.GENDER.FEMALE%>
+      event_type: search
+      event_entity_type: User

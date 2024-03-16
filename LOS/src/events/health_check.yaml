@@ -21,3 +21,7 @@ http.post./health:
         application/text:
           schema:
             type: string
+  log:
+    attributes:
+      event_type: health_check
+      event_body_name: inputs.body.name
