@@ -23,23 +23,18 @@
 		"typescript": "^4.9.5"
 	},
 	"dependencies": {
-		"@apollo/server": "^4.10.0",
 		"@aws-sdk/client-dynamodb": "^3.518.0",
 		"@aws-sdk/client-s3": "^3.529.1",
 		"@godspeedsystems/core": "file:../../../gs-node-service",
-		"@godspeedsystems/plugins-aws-as-datasource": "^1.1.1",
-		"@godspeedsystems/plugins-axios-as-datasource": "file:../../../gs-plugins/plugins/axios-as-datasource",
-		"@godspeedsystems/plugins-express-as-http": "file:../../../gs-plugins/plugins/express-as-http",
-		"@godspeedsystems/plugins-graphql-as-eventsource": "file:../../../gs-plugins/plugins/graphql-as-eventsource",
+		"@godspeedsystems/plugins-aws-as-datasource": "^1.1.4",
+		"@godspeedsystems/plugins-axios-as-datasource": "^1.0.3",
+		"@godspeedsystems/plugins-express-as-http": "^1.0.19",
+		"@godspeedsystems/plugins-graphql-as-eventsource": "^1.2.1",
 		"@godspeedsystems/plugins-kafka-as-datasource-as-eventsource": "^1.0.3",
 		"@godspeedsystems/plugins-prisma-as-datastore": "file:../../../gs-plugins/plugins/prisma-as-datastore",
-		"@prisma/client": "^5.2.0",
-		"@prisma/internals": "^5.10.2",
 		"axios": "^1.6.7",
 		"config": "^3.3.9",
 		"dotenv": "^16.0.3",
-		"fs-extra": "^11.2.0",
-		"graphql": "^16.8.1",
-		"prisma": "^5.2.0"
+		"fs-extra": "^11.2.0"
 	}
 }
