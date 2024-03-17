@@ -6,8 +6,12 @@ tasks:
       where:
         id: <% parseInt(inputs.params.id) %>
       data: <% inputs.body %>
+    
     caching:
-      invalidate: <%'LoanApplication_' + outputs.lending_service_db_loanapplication_create.data.id%> 
+      after:
+        invalidate: <%'LoanApplication_' + inputs.params.id%> 
+        cache_on_failure: false
+    
     logs:
       before:
         message: About to update LoanApplication in task

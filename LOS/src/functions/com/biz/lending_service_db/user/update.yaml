@@ -7,7 +7,9 @@ tasks:
         id: <% parseInt(inputs.params.id) %>
       data: <% inputs.body %>
     caching:
-      invalidate: <%'User_' + outputs.lending_service_db_loanapplication_create.data.id%>
+      after:
+        invalidate: <%'User_' + outputs.lending_service_db_loanapplication_create.data.id%>
+        cache_on_failure: false
     logs:
       before:
         message: About to update User in task

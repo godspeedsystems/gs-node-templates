@@ -4,8 +4,7 @@ caching: in_mem_cache
 log: # log setting of the project
   redact: ['pan_number', 'fn_user_pan_number'] # []'a.b.c', 'a.b.*', 'req.headers']  #pino redact rules. Default null.
   attributes: #which OTEL attributes do you want to log in every log statement. Default null
-    defaults_gender: mappings.GENDER.male
-    defaults_headers: headers.authorization
+    defaults_appId: my_lending_service
   level: debug #by default info
   timestamp: stdTimeFunctions.isoTime
   sync: true #or false. By default sync is false
