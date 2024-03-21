@@ -25,16 +25,17 @@
 	"dependencies": {
 		"@aws-sdk/client-dynamodb": "^3.518.0",
 		"@aws-sdk/client-s3": "^3.529.1",
-		"@godspeedsystems/core": "file:../../../gs-node-service",
+		"@godspeedsystems/core": "^2.5.1",
 		"@godspeedsystems/plugins-aws-as-datasource": "^1.1.4",
 		"@godspeedsystems/plugins-axios-as-datasource": "^1.0.3",
 		"@godspeedsystems/plugins-express-as-http": "^1.0.19",
 		"@godspeedsystems/plugins-graphql-as-eventsource": "^1.2.1",
 		"@godspeedsystems/plugins-kafka-as-datasource-as-eventsource": "^1.0.3",
-		"@godspeedsystems/plugins-prisma-as-datastore": "file:../../../gs-plugins/plugins/prisma-as-datastore",
+		"@godspeedsystems/plugins-prisma-as-datastore": "^1.0.7",
 		"axios": "^1.6.7",
 		"config": "^3.3.9",
 		"dotenv": "^16.0.3",
-		"fs-extra": "^11.2.0"
+		"fs-extra": "^11.2.0",
+		"pino": "^8.19.0"
 	}
 }

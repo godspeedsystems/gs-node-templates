@@ -4,7 +4,7 @@ http.post./health:
   fn: health.check
   authn: false
   authz: false
-  body:
+  body: #requestBody 
     content:
       application/json:
         schema:
@@ -14,7 +14,7 @@ http.post./health:
             name:
               type: string
               example: Godspeed
-
+  
   responses:
     200:
       content:

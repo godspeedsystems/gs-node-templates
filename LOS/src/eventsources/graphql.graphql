@@ -1,42 +1,24 @@
 input apply_loanInput {
-  loan_offer: apply_loanInput_loan_offerInput
-  kyc: apply_loanInput_kycInput
-}
-
-input apply_loanInput_kycInput {
-  pan_number: String
-  mobile_number: Float
-}
-
-input apply_loanInput_loan_offerInput {
-  bank_name: String
-  loan_amount: String
-  interest_rate: String
-  duration: String
+  pan_number: String!
+  bank_name: String!
+  panCardFile: String
 }
 
 scalar JSON
 
-input loan_offersInput_itemsInput {
-  bank_name: String
-  loan_amount: String
-  interest_rate: String
-  duration: String
+input loan_offersInput {
+  pan_number: String!
 }
 
 input LoanApplicationInput {
   createdAt: String
-  updatedAt: String
-  status: String
-  amount: Float
-  userId: Int
-  loanProductId: Int
-}
-
-input LoanProductInput {
-  name: String
-  interestRate: Float
-  termLength: Int
+  updatedAt: String!
+  status: String!
+  amount: Float!
+  interest: Float!
+  duration: Int!
+  bank_name: String!
+  userId: Int!
 }
 
 type Mutation {
@@ -51,18 +33,6 @@ type Mutation {
 
   """Fetch multiple LoanApplication from database"""
   Fetch_multiple_LoanApplication(body: JSON): JSON!
-
-  """Update LoanProduct from database"""
-  Update_a_LoanProduct(id: String!, body: LoanProductInput): JSON!
-
-  """Delete LoanProduct from database"""
-  Delete_a_LoanProduct(id: String!): JSON!
-
-  """Create LoanProduct from database"""
-  Create_a_new_LoanProduct(body: LoanProductInput): JSON!
-
-  """Fetch multiple LoanProduct from database"""
-  Fetch_multiple_LoanProduct(body: JSON): JSON!
 
   """Update User from database"""
   Update_a_User(id: String!, body: UserInput): JSON!
@@ -80,23 +50,18 @@ type Mutation {
   Apply_for_loan(body: apply_loanInput): JSON!
 
   """Fetch loan offer from banks"""
-  Fetch_loan_offer_from_banks(body: [loan_offersInput_itemsInput!]): JSON!
+  Fetch_loan_offer_from_banks(body: loan_offersInput): JSON!
 }
 
 type Query {
   """Fetch LoanApplication from database"""
   Fetch_LoanApplication(id: String!): JSON!
 
-  """Fetch LoanProduct from database"""
-  Fetch_LoanProduct(id: String!): JSON!
-
   """Fetch User from database"""
   Fetch_User(id: String!): JSON!
 }
 
 input UserInput {
-  email: String
-  password: String
-  name: String
+  pan_number: String!
 }
 

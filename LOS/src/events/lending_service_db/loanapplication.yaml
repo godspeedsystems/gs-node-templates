@@ -19,7 +19,6 @@ http & graphql.get./lending_service_db/loanapplication/{id}:
     attributes:
       event_entity_id: params.id
       event_user_role: user.role
-      event_gender: <%mappings.GENDER.FEMALE%>
       event_type: find_one
       event_entity_type: LoanApplication
 
@@ -115,10 +114,11 @@ http & graphql.post./lending_service_db/loanapplication/search:
         application/json:
           schema:
             type: array
+            items:
+              $ref: '#/definitions/lending_service_db/LoanApplication'
   log:
     attributes:
       event_user_role: user.role
-      event_gender: <%mappings.GENDER.FEMALE%>
       event_type: search
       event_entity_type: LoanApplication
 

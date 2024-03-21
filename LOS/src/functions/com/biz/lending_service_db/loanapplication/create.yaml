@@ -11,16 +11,9 @@ tasks:
         code: 500
         data:
           error: <%outputs.lending_service_db_user_create?.data%>
-      # tasks:
-      #   - id: create_user_error_handler
-      #     fn: com.gs.transform
-      #     args:
-      #       success: false
-      #       code: 500
-      #       error: <%outputs.lending_service_db_user_create.data%>
     caching:
       after:
-        #datasource: in_mem_cache #the name of the datasource instance to use instead of default cache
+        datasource: in_mem_cache #the name of the datasource instance to use instead of default cache
         key: <%'LoanApplication_' + outputs.lending_service_db_loanapplication_create?.data?.id%> # <Optional. Key name which is used to read from and write cache result of this task in applicable cache. Also see noRead and noWrite flags>
         #invalidate: # <Key name which we want to delete/remove from cache e.g. this feature can be used in CRUD types task. While delete operation, invalidate the cache of read or update task>
         cache_on_failure: false # <true|false, whether you want to cache the failure result or not. By default, it is false>

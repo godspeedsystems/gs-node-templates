@@ -1,7 +1,9 @@
 ## Sample LOS service
 
+Check out [Setup.md](./Setup.md) for setting up the project on your machine.
+
 ##### First, some useful links
-[Documentation](godspeed.systems/docs) of the meta-framework 
+[Documentation](http://godspeed.systems/docs) of the meta-framework 
 Godspeed Plugins Project for study and documentation of plugins ([Github](https://github.com/godspeedsystems/gs-node-service/))
 Godspeed Node Meta-framework Project ([Github](https://github.com/godspeedsystems/gs-plugins))
 [Youtube Channel](https://www.youtube.com/@godspeed.systems/videos) (For how to create plugins, how to setup etc)

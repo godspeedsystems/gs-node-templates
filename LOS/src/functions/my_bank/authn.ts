@@ -29,6 +29,7 @@ module.exports = async function (ctx: any) {
         logger.info('Auth token successfully refreshed and following headers set: %o', Object.keys(headers));
         return headers;
     } catch (error) {
+        
         logger.error('Error in refreshing token %o', error);
         throw error;
     }

@@ -1,9 +1,9 @@
 summary: push scf data into salesforce
-id: kafka_to_db
+id: healthcheck
 tasks:
-  - id: db_user_create
+  - id: healthcheck
     # If this is running it will return true
     fn: com.gs.return
     args:
       code: 200
-      data: <%'Its working! ' + inputs.body.name%>
+      data: <%'Hello ' + inputs.body.name%>

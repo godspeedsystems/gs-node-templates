@@ -8,7 +8,8 @@ export default async function (ctx: GSContext, args: {loan_offer: PlainObject, p
             method: 'post',
             url: '/anything',
         },
-        data: args
+        data: args,
+        headers:{}
     });
     return res;
 };

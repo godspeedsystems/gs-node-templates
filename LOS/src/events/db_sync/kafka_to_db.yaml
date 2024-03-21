@@ -10,7 +10,7 @@ kafka.new_loan.grpId1:
     content:
       application/json:
         schema:
-          type: string
+          type: object
           required:
             [
               pan_number,
