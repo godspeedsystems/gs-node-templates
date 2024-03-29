@@ -1,6 +1,7 @@
 import { GSContext, PlainObject } from "@godspeedsystems/core";
 
 export default function (ctx: GSContext, args: PlainObject) {
+    //@ts-ignore
     const {
         inputs: {
             data: {

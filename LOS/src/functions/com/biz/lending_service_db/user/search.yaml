@@ -13,7 +13,7 @@ tasks:
               args:
                 success: true # Full access
                 # data:
-                #   can_access: ['id', 'pan_number', 'loanApplications']
+                #   no_access: ['id', 'pan_number', 'loanApplications']
           manager:
             - fn: com.gs.transform
               args:

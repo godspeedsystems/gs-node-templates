@@ -8,8 +8,8 @@ default_client_config:
 services:
   s3:
     type: s3
-  s3_1:
-    type: s3
+  # s3_1:
+  #   type: s3
     # Can have API specific configuration override on top of default config
     # config:
     #   region: <%config.aws.region%>
