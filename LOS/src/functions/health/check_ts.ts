@@ -12,7 +12,9 @@ export default function (ctx: GSContext, args: PlainObject) {
         logger,
         outputs, 
         functions, 
-        datasources
+        datasources,
+        config,
+        mappings
     }: {
         inputs: {
             data: {
@@ -25,9 +27,11 @@ export default function (ctx: GSContext, args: PlainObject) {
         }, 
         childLogger: any, // Define CustomLogger if necessary
         logger: any,
-        outputs: any, // Adjust the type accordingly
-        functions: any, // Adjust the type accordingly
-        datasources: any // Adjust the type accordingly
+        outputs: PlainObject, // Adjust the type accordingly
+        functions: PlainObject, // Adjust the type accordingly
+        datasources: PlainObject, // Adjust the type accordingly
+        config: PlainObject,
+        mappings: PlainObject
     } = ctx;
     
     // Will print with workflow_name and task_id attributes

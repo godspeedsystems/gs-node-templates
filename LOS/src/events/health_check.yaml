@@ -1,7 +1,7 @@
 http.post./health:
   summary: Health check of the service 
   description: Check whether the service running
-  fn: health.check
+  fn: health.check_ts
   authn: false
   authz: false
   body: #requestBody 

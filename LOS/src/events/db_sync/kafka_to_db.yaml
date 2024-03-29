@@ -4,8 +4,8 @@ kafka.new_loan.grpId1:
   fn: db_sync.kafka_to_db
   summary: listen on new loan and create a database entry
   description: consume data from kafka and transfer data into DB
-  data: #requestBody
-    description: DB data payload
+  data: #kafka message body validation (the kafka plugin does JSON.parse(message))
+    description: Kafka Message data payload
     required: true
     content:
       application/json:
