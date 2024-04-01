@@ -6,7 +6,6 @@
 	"scripts": {
 		"gen-crud-api": "npx @godspeedsystems/api-generator",
 		"dev": "run-script-os",
-		"start:local":"npm run preview",
 		"dev:win32": "nodemon --watch src -e ts,js,yaml,json -r dotenv src\\index.ts",
 		"dev:darwin:linux": "nodemon --watch src -e ts,js,yaml,json -r dotenv ./src/index.ts",
 		"dev:default": "nodemon --watch src -e ts,js,yaml,json -r dotenv ./src/index.ts",
