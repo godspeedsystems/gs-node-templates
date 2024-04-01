@@ -24,7 +24,7 @@
 		"serve": "nodemon --watch src --watch config --watch mappings --watch plugins -e ts,js,yaml,json,.env --exec \"npm run build && npm run preview\""
 	},
 	"author": "",
-	"license": "ISC",
+	"license": "apache2",
 	"devDependencies": {
 		"@swc/cli": "^0.1.62",
 		"@swc/core": "^1.3.93",
