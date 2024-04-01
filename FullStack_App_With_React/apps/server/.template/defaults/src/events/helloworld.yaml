@@ -1,3 +1,0 @@
-"http.get./helloworld":
-  fn: helloworld
-  authn: false
