@@ -1,0 +1,8 @@
+node_env: NODE_ENV #where NODE_ENV is an environment variable set by you. This will be accessible as config.node_env in inline script and ctx.config.node_env in JS/TS
+my_bank_api: #can access these variables inside the project as `config.my_bank_api.auth.clientId`
+  auth:
+    clientId: MY_BANK_CLIENT_ID # env var
+    clientSecret: MY_BANK_CLIENT_SECRET # env var
+    grantType: MY_BANK_GRANT_TYPE # env var
+    x_apikey: MY_BANK_X_API_KEY # env var
+    Environment: MY_BANK_ENVIRONMENT # env var

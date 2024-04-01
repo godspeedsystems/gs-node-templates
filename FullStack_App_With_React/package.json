@@ -1,0 +1,16 @@
+{
+  "name": "fullstack_react_with_godspeed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "lerna run lint --stream",
+    "start": "lerna run start --scope client --stream & lerna run serve --scope server --stream",
+    "bootstrap": "lerna bootstrap"
+  },
+  "devDependencies": {
+    "lerna": "^8.1.2"
+  },
+  "author": "xCodemuse",
+  "license": "ISC"
+}
