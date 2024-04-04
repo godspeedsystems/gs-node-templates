@@ -1,0 +1,6 @@
+id: helloworld
+tasks:
+  - id: first_task
+    fn: com.gs.transform
+    args: 
+      name: "Hello World!"
