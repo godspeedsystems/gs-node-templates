@@ -20,10 +20,13 @@ authz:
 
 # validation error handling, to transform error responses
 on_request_validation_error: validations.request.standardResponseyml
-on_response_validation_error:
-  - id: response_validation_error_handler
-    fn: com.gs.return
-    args: <%inputs%>
+# on_response_validation_error:
+#   - id: response_validation_error_handler
+#     fn: com.gs.return
+#     args: 
+#       success: false
+#       code: 500
+#       data: <%inputs%>
 
 log:
   attributes:
