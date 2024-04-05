@@ -8,4 +8,4 @@ After running above command run ```npm run start```
 
 it will start your server on  ```PORT 8000``` and client on ```PORT 3000```
 
-In case you get stuck, reach out to us on our discord channel.
+In case you get stuck, reach out to us on our [discord server](https://discord.gg/mjBa3RvTP5).
