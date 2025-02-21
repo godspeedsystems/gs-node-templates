@@ -1,0 +1,41 @@
+type: express
+port: 3000
+request_body_limit: 20000
+file_size_limit: 50000
+docs:
+  endpoint: /api-docs
+  info:
+    title: Sample Helloworld App
+    version: 1.1.0
+    summary: Some http calls
+    description: Lets play with Godspeed
+    termsOfService: Terms of Service
+    contact:
+      name: API Support
+      url: http://www.helloworld.com/support
+      email: support@helloworld.com
+    license:
+      name: Apache 2.0
+      url: https://www.apache.org/licenses/LICENSE-2.0.html
+  servers:
+    - url: http://localhost:3000
+      description: Public API server
+    - url: http://localhost:3001
+      description: Internal API server
+# authn:
+#   jwt:
+#     secretOrKey: mysecret
+#     audience: mycompany
+#     issuer: mycompany
+
+
+on_request_validation_error: validations.request.standardResponse
+
+# on_response_validation_error:
+#   - id: response_validation_error_handler
+#     fn: com.gs.return
+#     args:
+#       success: false
+#       code: 500
+#       data:
+#         message: <% inputs.validation_error.data.message %>

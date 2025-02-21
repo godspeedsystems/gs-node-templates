@@ -1,0 +1,53 @@
+type: express
+port: 3000
+base_url: /api/v1 #the base url of the http service
+
+#Bassic swagger setup
+docs:
+  endpoint: /api-docs # the url on which the service will start
+  info: # info object as per swagger 3.0 spec
+    title: Sample Helloworld App
+    version: 1.1.0
+    summary: Some http calls
+    description: Lets play with Godspeed
+    contact:
+      name: API Support
+      url: 'http://www.helloworld.com/support'
+      email: support@helloworld.com
+    license:
+      name: Apache 2.0
+      url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  servers:
+    - url: 'http://localhost:3000'
+      description: Public API server
+    - url: 'http://localhost:3001'
+      description: Internal API server
+
+request_body_limit: 20000 # maximum size of the request body (in bytes)
+file_size_limit: 50000 # How big a file can be uploaded (in bytes)
+
+#jwt settings to run by default on every event
+authn:
+  jwt:
+    secretOrKey: mysecret #the secret
+    audience: mycompany #aud in jwt token
+    issuer: mycompany #iss in jwt token
+
+# authorization policies to run by default on every event
+# Uncomment this to start checking user roles.
+# This will require jwt to be setup, or another middleware to setup the user information in inputs
+# authz:
+#   - id: check_user_role
+#     fn: com.gs.transform
+#     args: <%inputs.user.role === 'admin'%>
+
+# validation error handling, to transform error responses
+on_request_validation_error: validations.request.standardResponseyml
+on_response_validation_error:
+  - id: response_validation_error_handler
+    fn: com.gs.return
+    args:
+      success: false 
+      code: 500
+      data:    
+        message: <% inputs.validation_error.data.message %>

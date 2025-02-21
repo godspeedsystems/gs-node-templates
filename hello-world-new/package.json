@@ -1,6 +1,6 @@
 {
-	"name": "gs-node-starter-kit",
-	"version": "1.0.0",
+	"name": "my-first-project",
+	"version": "1.1.0",
 	"description": "My first godspeed project.",
 	"main": "dist/index.js",
 	"scripts": {
@@ -39,22 +39,12 @@
 		"typescript": "^4.9.5"
 	},
 	"dependencies": {
-		"@apollo/server": "^4.10.0",
-		"@aws-sdk/client-dynamodb": "^3.518.0",
-		"@aws-sdk/client-s3": "^3.515.0",
 		"@godspeedsystems/core": "^2.4.8",
-		"@godspeedsystems/plugins-aws-as-datasource": "^1.1.1",
-		"@godspeedsystems/plugins-axios-as-datasource": "^1.0.1",
+		"@godspeedsystems/plugins-axios-as-datasource": "^1.0.3",
 		"@godspeedsystems/plugins-express-as-http": "^1.0.17",
-		"@godspeedsystems/plugins-graphql-as-eventsource": "^1.0.1",
-		"@godspeedsystems/plugins-kafka-as-datasource-as-eventsource": "^1.0.3",
-		"@godspeedsystems/plugins-prisma-as-datastore": "^1.0.6",
-		"@godspeedsystems/plugins-salesforce-as-datasource-as-eventsource": "^1.0.0",
 		"@prisma/client": "^5.2.0",
 		"config": "^3.3.9",
-		"dotenv": "^16.0.3",
-		"fs-extra": "^11.2.0",
-		"graphql": "^16.8.1",
+		"dotenv": "^16.4.5",
 		"pino-pretty": "^10.2.0",
 		"prisma": "^5.2.0"
 	}

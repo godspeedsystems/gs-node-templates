@@ -1,0 +1,30 @@
+# can use inline scripting in datasource and eventsource yamls
+type: axios
+base_url: https://httpbin.org # the base url of the api client
+curlifiedLogs: true #will print the curl requests of each API hit. Useful for debugging
+authn: # how to authenticate to this datasource
+  fn: my_bank_api.auth_workflow # the token refresh function. It returns the headers to be set for the API call
+  refreshOn: # if not specified datasource token is refreshed on 401 code by default
+    statusCode: [401, 403]
+
+retry: #default retry logic on all API calls. Can be overriden at the task level when calling the API
+  when:
+    status: [500,501] #default 500
+    message: my custom expected message for retry
+  max_attempts: 3
+  type: exponential # can be constant or random as well. Check documentation
+  min_interval: PT5s
+  max_interval: PT15s
+
+headers: #these will be set in every API call to the datasource
+  Content-Type:    application/json
+  #x-apikey:       <% config.my_bank_api.auth.x_apikey %>
+  #Environment:    <% config.my_bank_api.auth.Environment %>
+
+# Any additional data you keep in the config will be available 
+# in the respective datasource's GSDatasource implementation class inside `this.config`
+# data:
+  # clientId:       <% config.my_bank_api.auth.clientId %>
+  # clientSecret:   <% config.my_bank_api.auth.clientSecret %>
+  # grantType:      <% config.my_bank_api.auth.grantType %>
+# some_random_key: some_value

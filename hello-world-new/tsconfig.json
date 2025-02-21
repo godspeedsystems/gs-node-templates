@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"outDir": "./dist",
+		"rootDir": "./src",
+		"strict": true,
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true
+	},
+	"exclude": [
+		"./node_modules"
+	],
+	"name": "my-first-project"
+}
