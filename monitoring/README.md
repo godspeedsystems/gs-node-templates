@@ -89,11 +89,11 @@ SERVICE_A_URL=https://example-service-a.com
 SERVICE_B_URL=https://example-service-b.com
 
 # Sender email credentials
-SENDER_MAIL=youremail@example.com
-MAIL_PASSWORD=yourpassword
+SENDER_MAIL= youremail@example.com
+MAIL_PASSWORD= your app specific password
 
 # Alert recipient
-MAIL_USER=alerts@example.com
+MAIL_USER= alerts@example.com
 ```
 
 ### `config/custom-environment-variables.yaml`
