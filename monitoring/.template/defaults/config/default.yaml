@@ -1,0 +1,13 @@
+lang: js #you can also set 'coffee'. Default is 'js'. You can set either 'coffee' or 'js' as your inline scripting language
+
+log:
+  redact: # ['a.b.c', 'a.b.*', 'req.headers', 'mobileNumber'] #pino redact rules. Default null.
+  log_attributes: #OTEL attributes to add in every log. by default null
+  level: debug #by default info
+  sync: true #By default sync is false. For debugging, keep it true. For performance keep it false.
+  timestamp: stdTimeFunctions.isoTime #Pino date formats
+  bindings: # should pid and hostname be enabled in pino log bindings.
+    pid: true
+    hostname: true 
+
+SUPPRESS_NO_CONFIG_WARNING: 1

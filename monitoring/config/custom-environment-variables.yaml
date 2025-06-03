@@ -1,0 +1,10 @@
+services:
+  serviceA: SERVICE_A_URL
+  serviceB: SERVICE_B_URL
+
+# sender email and pswd
+sender_mail: SENDER_MAIL
+mail_password: MAIL_PASSWORD
+
+#  receiver email
+notify_user: MAIL_USER

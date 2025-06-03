@@ -1,0 +1,51 @@
+{
+  "name": "godspeed-project",
+  "version": "1.1.0",
+  "description": "My first godspeed project.",
+  "main": "dist/index.js",
+  "scripts": {
+    "gen-crud-api": "npx @godspeedsystems/api-generator",
+    "dev": "run-script-os",
+    "dev:win32": "nodemon --watch src -e ts,js,yaml,json -r dotenv src\\index.ts",
+    "dev:darwin:linux": "nodemon --watch src -e ts,js,yaml,json -r dotenv ./src/index.ts",
+    "dev:default": "nodemon --watch src -e ts,js,yaml,json -r dotenv ./src/index.ts",
+    "build": "run-script-os",
+    "build:win32": " (if exist dist rmdir /s /q dist) && mkdir dist && npx swc src -d dist --strip-leading-paths && copyfiles -a -u 1 \"src/**/*.!(ts)\" dist && copyfiles -a \"config/**/*\" dist && copyfiles -a -u 2 \"src/mappings/**/*\" \"dist/mappings\" && if exist README.md copy README.md dist\\ && copy tsconfig.json dist\\",
+    "build:darwin:linux": "rm -rf dist && mkdir -p dist && npx swc src -d dist --strip-leading-paths && rsync -a --exclude '*.ts' ./src/ ./dist/ && rsync -a ./config/ ./dist/config/ && rsync -a --remove-source-files ./src/mappings/ ./dist/mappings/ && [ -f README.md ] && cp README.md ./dist/ || true && cp tsconfig.json ./dist/",
+    "build:default": "swc src -d dist && rsync -a --exclude '*.ts' ./src/ ./dist/ && rsync -a ./config/ ./dist/config && rsync -a ./src/mappings/ ./dist/mappings",
+    "preview": "run-script-os",
+    "preview:win32": "node dist\\index.js",
+    "preview:darwin:linux": "node dist/index.js",
+    "preview:default": "node dist/index.js",
+    "clean": "run-script-os",
+    "clean:win32": "rmdir /s /q dist",
+    "clean:darwin:linux": "rm -rf dist",
+    "clean:default": "rm -rf dist",
+    "prisma-db-push": "for i in src/datasources/*.prisma; do npx --yes prisma db push --schema $i; done;",
+    "prisma-generate": "for i in src/datasources/*.prisma; do npx --yes prisma generate --schema $i; done;",
+    "serve": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\" && nodemon --watch src --watch config --watch mappings -e ts,js,yaml,json,.env --exec \"npm run build && npm run preview\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@swc/cli": "^0.7.7",
+    "@swc/core": "^1.11.24",
+    "@types/config": "^3.3.5",
+    "@types/node": "^22.15.19",
+    "copyfiles": "^2.4.1",
+    "nodemon": "^3.1.10",
+    "run-script-os": "^1.1.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@godspeedsystems/core": "^2.5.4",
+    "@godspeedsystems/plugins-axios-as-datasource": "^1.0.6",
+    "@godspeedsystems/plugins-express-as-http": "^1.0.25",
+    "@prisma/client": "^6.8.2",
+    "config": "^4.0.0",
+    "dotenv": "^16.5.0",
+    "pino-pretty": "^13.0.0",
+    "prisma": "^6.8.2"
+  }
+}

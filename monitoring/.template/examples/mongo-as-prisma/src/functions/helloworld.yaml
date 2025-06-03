@@ -1,0 +1,5 @@
+id: helloworld
+tasks:
+  - id: first_task
+    fn: com.gs.return
+    args: <% "Hello World. This is " + inputs.query.name_one + " ."+ inputs.body.greeting%>

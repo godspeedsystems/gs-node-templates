@@ -1,0 +1,20 @@
+tasks:
+  - id: validation_error
+    description: |
+      Here you can customize the response when a request 
+      or response validation error happens. Error is in AJV error format.
+    fn: com.gs.transform
+    args:
+      success: false
+      code: 500
+      data: | # error, message and original event data is present in the inputs object
+        <%
+          const {validation_error, event, message} = inputs;
+          return {validation_error, event, message};
+        %>
+    # logs:
+    #   before:
+    #     level: info
+    #     message: "something went wrong"
+    #     attributes:
+    #       info: <%inputs%>

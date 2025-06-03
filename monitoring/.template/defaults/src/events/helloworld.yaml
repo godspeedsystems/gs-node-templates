@@ -1,0 +1,15 @@
+http.get./helloworld:
+  fn: helloworld
+  authn: false
+  params:
+    - name: name
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      content:
+        application/json:
+          schema:
+            type: string

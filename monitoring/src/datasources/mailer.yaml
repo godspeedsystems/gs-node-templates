@@ -1,0 +1,5 @@
+type: mailer
+service: gmail
+user: <%config.sender_mail%>
+pass: <%config.mail_password%>
+
